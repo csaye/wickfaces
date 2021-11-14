@@ -39,6 +39,54 @@
   border-radius: 8px;
   box-shadow: 0 0 5px #000;
   width: 320px;
+  height: 202px;
+  overflow: hidden;
+}
+
+.form > .loading {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form > .loading > span {
+  color: var(--blue);
+}
+
+.form > .error {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.form > .error > p {
+  color: red;
+  font-size: 24px;
+  margin: 0;
+}
+
+.form > .error > button {
+  margin-bottom: 0;
+}
+
+.form > .sent {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+  color: green;
+}
+
+.form > .sent span {
+  font-size: 16px;
+  color: var(--blue);
 }
 
 .form > form {
@@ -90,4 +138,14 @@
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .center {
+    flex-direction: column;
+  }
+  .overview {
+    text-align: center;
+    margin-right: 0;
+  }
 }
