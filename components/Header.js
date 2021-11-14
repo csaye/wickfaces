@@ -5,15 +5,16 @@ import styles from '../styles/components/Header.module.css';
 
 export default function Header() {
   return (
-    <div>
+    <div className={styles.container}>
+      <span className="flexfill" />
       <Link href="/profile">
-        <a>Profile</a>
+        <a className={styles.link}>Profile</a>
       </Link>
       <Link href="/board">
-        <a>Board</a>
+        <a className={styles.link}>Board</a>
       </Link>
       <Link href="/messages">
-        <a>Messages</a>
+        <a className={styles.link}>Messages</a>
       </Link>
     </div>
   );
