@@ -6,6 +6,17 @@ import styles from '../styles/components/Header.module.css';
 export default function Header() {
   return (
     <div className={styles.container}>
+      <Link href="/">
+        <a className={styles.logo}>
+          <Image
+            className={styles.image}
+            src="/logo.png"
+            width="48"
+            height="48"
+          />
+          <h1>Wick<span>faces</span></h1>
+        </a>
+      </Link>
       <span className="flexfill" />
       <Link href="/profile">
         <a className={styles.link}>Profile</a>

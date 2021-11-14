@@ -9,6 +9,24 @@
   z-index: 1;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.logo > span:first-of-type {
+  margin-right: 8px!important;
+}
+
+.logo > h1 {
+  margin: 0;
+}
+
+.logo > h1 > span {
+  color: var(--blue);
+}
+
 .link {
   margin-right: 20px;
   color: #555;
