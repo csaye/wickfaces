@@ -3,6 +3,31 @@ import Header from '../components/Header';
 import styles from '../styles/pages/Index.module.css';
 
 export default function Index() {
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(undefined);
+
+  // sends user registration email
+  async function register() {
+    // verify chadwick email
+    if (!email.endsWith('@chadwickschool.org')) {
+      setError('Please use your Chadwick email.');
+      return;
+    }
+    setSent(undefined);
+    const settings = {
+      url: 'http://localhost:3000',
+      handleCodeInApp: true
+    };
+    // send sign in link
+    sendSignInLinkToEmail(auth, email, settings)
+    .then(() => {
+      setSent(true);
+      window.localStorage.setItem('emailForSignIn', email);
+    })
+    .catch(e => setError(getError(e)));
+  }
+
   return (
     <div>
       <Header />
