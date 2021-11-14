@@ -6,6 +6,14 @@ export default function Index() {
   return (
     <div>
       <Header />
+      <div className={styles.content}>
+        <div className={styles.center}>
+          <div className={styles.overview}>
+            <h1>Wickfaces</h1>
+            <p>Connect with classmates and stay in touch after graduation.</p>
+          </div>
+        </div>
+      </div>
       <div className={styles.footer}>
         <div>
         <p>

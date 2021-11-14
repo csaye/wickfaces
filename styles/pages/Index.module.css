@@ -1,3 +1,38 @@
+.content {
+  background:
+    linear-gradient(rgba(6, 58, 91, 0.5), rgba(6, 58, 91, 0.5)),
+    url('/img/roof.jpg');
+  background-size: cover;
+  background-position: center center;
+  min-height: calc(100vh - var(--header));
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 80px;
+}
+
+.overview {
+  color: #fff;
+  margin-right: 32px;
+}
+
+.overview > h1 {
+  font-size: 64px;
+  margin: 0;
+}
+
+.overview > p {
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
 .footer {
   height: 60px;
   display: flex;
