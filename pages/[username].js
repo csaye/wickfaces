@@ -39,6 +39,21 @@ export default function User() {
   return (
     <div className={styles.container}>
       <Header />
+      <label>
+        <div
+          className={styles.image}
+          style={{
+            background: userData.cover ?
+            `center center / cover url(${userData.cover})` : '#ddd'
+          }}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={e => setImage(e.target.files[0])}
+          hidden
+        />
+      </label>
       <h1>{userData.firstName} {userData.lastName} &apos;{userData.year}</h1>
       <input
         placeholder="College"
