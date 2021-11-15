@@ -1,0 +1,80 @@
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #000;
+  overflow: hidden;
+  width: 400px;
+}
+
+.container > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > form > input {
+  margin-top: 12px;
+}
+
+.nameinput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameinput > input {
+  width: calc(50% - 6px);
+}
+
+.container input {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.container button {
+  background: var(--blue);
+  border: 0;
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.25s;
+  margin: 16px 0;
+}
+
+.container button:hover {
+  background: var(--darkblue);
+}
+
+.container button:active {
+  transform: scale(0.98);
+}
+
+.error {
+  margin-bottom: 16px;
+}
+
+.switch {
+  margin: 0 0 8px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+}
+
+.switch span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.switch span:hover {
+  color: var(--blue);
+}
+
+.info > p {
+  color: #555;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+}
