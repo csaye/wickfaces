@@ -1,3 +1,4 @@
+import Main from '../components/Main';
 import Head from 'next/head';
 
 import '../styles/globals.css';
@@ -9,8 +10,6 @@ import { firebaseConfig } from '../util/firebaseConfig';
 if (!getApps().length) initializeApp(firebaseConfig);
 
 export default function App(props) {
-  const { Component, pageProps } = props;
-
   return (
     <>
       <Head>
@@ -21,7 +20,7 @@ export default function App(props) {
         <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png" />
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
-      <Component {...pageProps} />
+      <Main {...props} />
     </>
   );
 }
