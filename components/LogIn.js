@@ -1,6 +1,47 @@
+import Router from 'next/router';
+import Alert from '@mui/material/Alert';
+
+import {
+  getAuth, signInWithEmailAndPassword, sendPasswordResetEmail
+} from 'firebase/auth';
+import { getFirestore, collection, getDoc, doc } from 'firebase/firestore';
+import { useState } from 'react';
+import getError from '../util/getError';
+
 import styles from '../styles/components/LogIn.module.css';
 
 export default function LogIn(props) {
+  const { setRegister } = props;
+
+  const auth = getAuth();
+  const db = getFirestore();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // pushes current user to profile page
+  async function pushToProfile() {
+    const uid = auth.currentUser.uid;
+    const usersRef = collection(db, 'users');
+    const userRef = doc(usersRef, uid);
+    const userDoc = await getDoc(userRef);
+    const username = userDoc.data().username;
+    Router.push(`/${username}`);
+  }
+
+  // logs user in
+  function logIn() {
+    setError('');
+    try {
+      signInWithEmailAndPassword(auth, email, password)
+    } catch (e) {
+      setError(getError(e));
+      return;
+    }
+    pushToProfile();
+  }
+
   return (
     <div className={styles.container}>
       <form onSubmit={e => {
