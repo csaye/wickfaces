@@ -14,6 +14,17 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/pages/User.module.css';
 
 export default function User() {
+  const auth = getAuth();
+  const db = getFirestore();
+  const storage = getStorage();
+
+  const usersRef = collection(db, 'users');
+  const uid = auth.currentUser?.uid;
+
+  const [userData, setUserData] = useState(undefined);
+  const [college, setCollege] = useState('');
+  const [major, setMajor] = useState('');
+
   const router = useRouter();
   const { username } = router.query;
 
@@ -25,6 +36,19 @@ export default function User() {
     // set user data
     if (!docs.docs.length) setUserData(null);
     else setUserData(docs.docs[0].data());
+  }
+
+  // uploads and sets image to given file
+  async function setImage(image) {
+    if (!image) return;
+    // upload image
+    const filePath = `covers/${uid}`;
+    const fileRef = ref(storage, filePath);
+    await uploadBytes(fileRef, image);
+    // update image
+    const url = await getDownloadURL(fileRef);
+    const userRef = doc(usersRef, uid);
+    await updateDoc(userRef, { cover: url });
   }
 
   // get user data on start
