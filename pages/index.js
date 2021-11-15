@@ -66,48 +66,6 @@ export default function Index() {
             <p>Connect with classmates and stay in touch after graduation.</p>
           </div>
           {
-            error ?
-            <div className={styles.form}>
-              <div className={styles.error}>
-              <p>{error}</p>
-              <button onClick={() => {
-                setError(null);
-                setSent(false);
-              }}>
-                Back
-              </button>
-              </div>
-            </div> :
-            sent === undefined ?
-            <div className={styles.form}>
-              <div className={styles.loading}>
-                <CircularProgress />
-              </div>
-            </div> :
-            sent ?
-            <div className={styles.form}>
-              <div className={styles.sent}>
-                <p>Email sucessfully sent to <span>{email}</span></p>
-              </div>
-            </div> :
-            <div className={styles.form}>
-              <form onSubmit={e => {
-                e.preventDefault();
-                register();
-              }}>
-                <input
-                  placeholder="Chadwick email"
-                  type="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  autoComplete="email"
-                  required
-                />
-                <button>Register</button>
-              </form>
-              <p>You must have a Chadwick email to register.</p>
-              <p>This website is not affiliated with Chadwick School.</p>
-            </div>
           }
         </div>
       </div>
