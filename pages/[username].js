@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Header from '../components/Header';
 
 import { getAuth } from 'firebase/auth';
 import {
@@ -62,7 +61,6 @@ export default function User() {
 
   return (
     <div className={styles.container}>
-      <Header />
       <label>
         <div
           className={styles.image}

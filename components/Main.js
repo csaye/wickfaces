@@ -1,3 +1,5 @@
+import Header from './Header';
+
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, doc } from 'firebase/firestore';
@@ -20,7 +22,10 @@ function MainAuthed(props) {
   userDoc.exists() ? userDoc.data() : null;
 
   return (
-    <Component currUser={currUser} {...pageProps} />
+    <>
+      <Header currUser={currUser} />
+      <Component currUser={currUser} {...pageProps} />
+    </>
   );
 }
 
@@ -42,6 +47,9 @@ export default function Main(props) {
   return (
     authed ?
     <MainAuthed {...props} /> :
-    <Component currUser={authed} {...pageProps} />
+    <>
+      <Header currUser={authed} />
+      <Component currUser={authed} {...pageProps} />
+    </>
   );
 }

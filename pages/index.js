@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import Register from '../components/Register';
 import LogIn from '../components/LogIn';
 
@@ -11,7 +10,6 @@ export default function Index() {
 
   return (
     <div>
-      <Header />
       <div className={styles.content}>
         <div className={styles.center}>
           <div className={styles.overview}>
