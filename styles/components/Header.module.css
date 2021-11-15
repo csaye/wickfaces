@@ -35,3 +35,15 @@
 .link:hover {
   color: var(--blue);
 }
+
+.container > button {
+  margin-right: 20px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #555;
+}
+
+.container > button:hover {
+  color: var(--blue);
+}
