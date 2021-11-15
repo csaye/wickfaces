@@ -1,5 +1,29 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
+import { getFirestore, collection, doc } from 'firebase/firestore';
+import { useDocument } from 'react-firebase-hooks/firestore';
+
+function MainAuthed(props) {
+  const { Component, pageProps } = props;
+
+  const db = getFirestore();
+  const auth = getAuth();
+
+  // get user doc
+  const uid = auth.currentUser.uid;
+  const usersRef = collection(db, 'users');
+  const userRef = doc(usersRef, uid);
+  const [userDoc] = useDocument(userRef);
+
+  // get curr user
+  const currUser = !userDoc ? undefined :
+  userDoc.exists() ? userDoc.data() : null;
+
+  return (
+    <Component currUser={currUser} {...pageProps} />
+  );
+}
+
 export default function Main(props) {
   const { Component, pageProps } = props;
 
