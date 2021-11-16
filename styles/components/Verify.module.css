@@ -7,22 +7,28 @@
   width: 400px;
 }
 
-.container button {
-  background: var(--blue);
-  border: 0;
-  color: #fff;
-  padding: 16px 30px;
-  border-radius: 8px;
-  font-size: 16px;
+.almost {
+  font-size: 24px;
   font-weight: bold;
-  transition: 0.25s;
+  margin: 0;
+}
+
+.check {
   margin: 16px 0;
 }
 
-.container button:hover {
-  background: var(--darkblue);
+.info > p {
+  color: #555;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
 }
 
-.container button:active {
-  transform: scale(0.98);
+.info span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.info span:hover {
+  color: var(--blue);
 }
