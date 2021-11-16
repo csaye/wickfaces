@@ -1,3 +1,5 @@
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
 import Image from 'next/image';
 
 import { getAuth } from 'firebase/auth';
@@ -21,6 +23,8 @@ export default function User() {
   const uid = auth.currentUser?.uid;
 
   const [userData, setUserData] = useState(undefined);
+  const [editing, setEditing] = useState(false);
+
   const [college, setCollege] = useState('');
   const [major, setMajor] = useState('');
 
@@ -87,6 +91,18 @@ export default function User() {
         value={major}
         onChange={e => setMajor(e.target.value)}
       />
+      {
+        userData.uid === uid &&
+        (
+          editing ?
+          <button onClick={() => setEditing(false)}>
+            <SaveIcon />
+          </button> :
+          <button onClick={() => setEditing(true)}>
+            <EditIcon />
+          </button>
+        )
+      }
     </div>
   );
 }
