@@ -1,17 +1,35 @@
 import styles from '../styles/components/Verify.module.css';
 
+import { useState } from 'react';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
 
 export default function Verify() {
   const auth = getAuth();
 
+  const [sent, setSent] = useState(false);
+
   return (
     <div className={styles.container}>
-      <p>You&apos;re almost there.</p>
-      <p>Check {auth.currentUser.email} to verify your account.</p>
-      <button onClick={() => sendEmailVerification(auth.currentUser)}>
-        Resend Verification
-      </button>
+      <p className={styles.almost}>You&apos;re almost there.</p>
+      <p className={styles.check}>
+        Check <u>{auth.currentUser.email}</u> to verify your account.
+      </p>
+      <div className={styles.info}>
+        {
+          sent ?
+          <p>Resent. Please check your email.</p> :
+          <p>
+            Didn&apos;t see an email?{' '}
+            <span onClick={() => {
+              setSent(true);
+              sendEmailVerification(auth.currentUser);
+            }}>
+              Resend verification
+            </span>
+          </p>
+        }
+        <p>This website is not affiliated with Chadwick School.</p>
+      </div>
     </div>
   );
 }
