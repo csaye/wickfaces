@@ -1,0 +1,28 @@
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #000;
+  overflow: hidden;
+  width: 400px;
+}
+
+.container button {
+  background: var(--blue);
+  border: 0;
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.25s;
+  margin: 16px 0;
+}
+
+.container button:hover {
+  background: var(--darkblue);
+}
+
+.container button:active {
+  transform: scale(0.98);
+}
