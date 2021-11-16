@@ -5,9 +5,18 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, doc } from 'firebase/firestore';
 import { useDocument } from 'react-firebase-hooks/firestore';
 
-function MainAuthed(props) {
-  const { Component, pageProps } = props;
+function Comp(props) {
+  const { Component, pageProps, currUser } = props;
 
+  return (
+    <>
+      <Header currUser={currUser} />
+      <Component currUser={currUser} {...pageProps} />
+    </>
+  );
+}
+
+function MainAuthed(props) {
   const db = getFirestore();
   const auth = getAuth();
 
@@ -22,16 +31,13 @@ function MainAuthed(props) {
   userDoc.exists() ? userDoc.data() : null;
 
   return (
-    <>
-      <Header currUser={currUser} />
-      <Component currUser={currUser} {...pageProps} />
-    </>
+    auth.currentUser.emailVerified ?
+    <Comp currUser={currUser} {...props} /> :
+    <Comp currUser={false} {...props} />
   );
 }
 
 export default function Main(props) {
-  const { Component, pageProps } = props;
-
   const auth = getAuth();
 
   const [authed, setAuthed] = useState(undefined);
@@ -47,9 +53,6 @@ export default function Main(props) {
   return (
     authed ?
     <MainAuthed {...props} /> :
-    <>
-      <Header currUser={authed} />
-      <Component currUser={authed} {...pageProps} />
-    </>
+    <Comp currUser={authed} {...props} />
   );
 }
