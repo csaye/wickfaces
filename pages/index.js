@@ -1,11 +1,17 @@
+import Verify from '../components/Verify';
 import Register from '../components/Register';
 import LogIn from '../components/LogIn';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAuth, sendEmailVerification } from 'firebase/auth';
 
 import styles from '../styles/pages/Index.module.css';
 
-export default function Index() {
+export default function Index(props) {
+  const { currUser, verifyEmail } = props;
+
+  const auth = getAuth();
+
   const [register, setRegister] = useState(false);
 
   return (
@@ -17,6 +23,10 @@ export default function Index() {
             <p>Connect with classmates and stay in touch after graduation.</p>
           </div>
           {
+            currUser ?
+            <p>You are authed.</p> :
+            (auth.currentUser && !auth.currentUser.emailVerified) ?
+            <Verify /> :
             register ?
             <Register setRegister={setRegister} /> :
             <LogIn setRegister={setRegister} />
