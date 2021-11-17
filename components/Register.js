@@ -2,7 +2,9 @@ import Router from 'next/router';
 import Alert from '@mui/material/Alert';
 
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth, createUserWithEmailAndPassword, sendEmailVerification
+} from 'firebase/auth';
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
 import getError from '../util/getError';
 
@@ -44,8 +46,11 @@ export default function Register(props) {
     const yearStr = username.substring(username.length - 2);
     const year = parseInt(yearStr);
     const joined = new Date().getTime();
-    setDoc(userRef, { firstName, lastName, username, year, joined });
-    Router.push(`/${username}`);
+    setDoc(userRef, {
+      firstName, lastName, username, year, joined,
+      college: '', major: ''
+    });
+    sendEmailVerification(auth.currentUser);
   }
 
   return (

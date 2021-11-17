@@ -1,4 +1,5 @@
 import Verify from '../components/Verify';
+import Authed from '../components/Authed';
 import Register from '../components/Register';
 import LogIn from '../components/LogIn';
 
@@ -24,7 +25,7 @@ export default function Index(props) {
           </div>
           {
             currUser ?
-            <p>You are authed.</p> :
+            <Authed currUser={currUser} /> :
             (auth.currentUser && !auth.currentUser.emailVerified) ?
             <Verify /> :
             register ?

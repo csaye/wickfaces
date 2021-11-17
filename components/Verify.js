@@ -10,7 +10,7 @@ export default function Verify() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.almost}>You&apos;re almost there.</p>
+      <h1>You&apos;re almost there.</h1>
       <p className={styles.check}>
         Check <u>{auth.currentUser.email}</u> to verify your account.
       </p>

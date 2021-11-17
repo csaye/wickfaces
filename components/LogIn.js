@@ -31,15 +31,16 @@ export default function LogIn(props) {
   }
 
   // logs user in
-  function logIn() {
+  async function logIn() {
     setError('');
     try {
-      signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password)
     } catch (e) {
       setError(getError(e));
       return;
     }
-    pushToProfile();
+    // if email verified, push to profile
+    if (auth.currentUser.emailVerified) pushToProfile();
   }
 
   return (
