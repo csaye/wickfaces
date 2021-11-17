@@ -1,0 +1,6 @@
+.container {
+  width: 240px;
+  height: 320px;
+  position: relative;
+  background: center center / contain url('/img/blank/cover.png');
+}
