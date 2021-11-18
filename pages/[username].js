@@ -1,6 +1,11 @@
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import UploadIcon from '@mui/icons-material/Upload';
+import SchoolIcon from '@mui/icons-material/School';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import Router from 'next/router';
 import Image from 'next/image';
+import Cover from '../components/Cover';
 
 import { getAuth } from 'firebase/auth';
 import {
@@ -27,6 +32,8 @@ export default function User(props) {
   const [userData, setUserData] = useState(undefined);
   const [editing, setEditing] = useState(false);
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [college, setCollege] = useState('');
   const [major, setMajor] = useState('');
 
@@ -67,7 +74,15 @@ export default function User(props) {
     await updateDoc(userRef, { firstName, lastName, college, major });
   }
 
-  // get user data on start
+  // resets user data input
+  function resetData() {
+    setFirstName(userData.firstName);
+    setLastName(userData.lastName);
+    setCollege(userData.college);
+    setMajor(userData.major);
+  }
+
+  // route or get user data on start
   useEffect(() => {
     if (currUser === false) Router.replace('/');
     if (currUser && username) getUserData();
@@ -79,14 +94,9 @@ export default function User(props) {
 
   return (
     <div className={styles.container}>
+      <Cover image={userData.cover} />
       <label>
-        <div
-          className={styles.image}
-          style={{
-            background: userData.cover ?
-            `center center / cover url(${userData.cover})` : '#ddd'
-          }}
-        />
+        <UploadIcon />
         <input
           type="file"
           accept="image/*"
