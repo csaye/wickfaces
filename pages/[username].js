@@ -81,28 +81,52 @@ export default function User() {
           hidden
         />
       </label>
-      <h1>{userData.firstName} {userData.lastName} &apos;{userData.year}</h1>
-      <input
-        placeholder="College"
-        value={college}
-        onChange={e => setCollege(e.target.value)}
-      />
-      <input
-        placeholder="Major"
-        value={major}
-        onChange={e => setMajor(e.target.value)}
-      />
       {
-        userData.uid === uid &&
-        (
-          editing ?
-          <button onClick={() => setEditing(false)}>
+        editing ?
+        <form onSubmit={e => {
+          e.preventDefault();
+          updateUser();
+        }}>
+          <input
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            required
+          />
+          <input
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+            required
+          />
+          <input
+            placeholder="College"
+            value={college}
+            onChange={e => setCollege(e.target.value)}
+          />
+          <input
+            placeholder="Major"
+            value={major}
+            onChange={e => setMajor(e.target.value)}
+          />
+          <button>
             <SaveIcon />
-          </button> :
-          <button onClick={() => setEditing(true)}>
-            <EditIcon />
           </button>
-        )
+        </form> :
+        <div>
+          <h1>{userData.firstName} {userData.lastName} &apos;{userData.year}</h1>
+          {college && <p><SchoolIcon /> {college}</p>}
+          {major && <p><MenuBookIcon /> {major}</p>}
+          {
+            userData.uid === uid &&
+            <button onClick={() => {
+              resetData();
+              setEditing(true);
+            }}>
+              <EditIcon />
+            </button>
+          }
+        </div>
       }
     </div>
   );
