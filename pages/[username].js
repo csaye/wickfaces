@@ -56,11 +56,12 @@ export default function User() {
 
   // get user data on start
   useEffect(() => {
-    if (username) getUserData();
-  }, [username]);
+    if (currUser === false) Router.replace('/');
+    if (currUser && username) getUserData();
+  }, [currUser, username]);
 
   // return if invalid data
-  if (userData === undefined) return <p>Loading...</p>;
+  if (!currUser || userData === undefined) return <p>Loading...</p>;
   if (!userData) return <p>{username} not found</p>;
 
   return (
