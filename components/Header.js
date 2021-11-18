@@ -7,7 +7,9 @@ import { getAuth, signOut } from 'firebase/auth';
 
 import styles from '../styles/components/Header.module.css';
 
-export default function Header() {
+export default function Header(props) {
+  const { currUser } = props;
+
   const auth = getAuth();
 
   return (
@@ -25,9 +27,12 @@ export default function Header() {
       </Link>
       <span className="flexfill" />
       {
-        auth.currentUser &&
+        currUser &&
         <>
-          <Link href="/profile">
+          <Link href="/users">
+            <a className={styles.link}>Users</a>
+          </Link>
+          <Link href={`/${currUser.username}`}>
             <a className={styles.link}>Profile</a>
           </Link>
           <Link href="/board">
@@ -36,12 +41,15 @@ export default function Header() {
           <Link href="/messages">
             <a className={styles.link}>Messages</a>
           </Link>
-          <Tooltip title="Sign Out" arrow>
-            <button onClick={() => signOut(auth)}>
-              <ExitToAppIcon />
-            </button>
-          </Tooltip>
         </>
+      }
+      {
+        (currUser || (auth.currentUser && !auth.currentUser.emailVerified)) &&
+        <Tooltip title="Log Out" arrow>
+          <button onClick={() => signOut(auth)}>
+            <ExitToAppIcon />
+          </button>
+        </Tooltip>
       }
     </div>
   );
