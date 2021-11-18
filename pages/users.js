@@ -1,8 +1,10 @@
-import Link from 'next/link';
 import Router from 'next/router';
+import UserCard from '../components/UserCard';
 
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+
+import styles from '../styles/pages/Users.module.css';
 
 export default function Users(props) {
   const { currUser } = props;
@@ -29,15 +31,13 @@ export default function Users(props) {
 
   return (
     <div>
-      {
-        usersData.map(userData =>
-          <div key={userData.id}>
-            <Link href={`/${userData.username}`}>
-              <a>{userData.username}</a>
-            </Link>
-          </div>
-        )
-      }
+      <div className={styles.users}>
+        {
+          usersData.map(userData =>
+            <UserCard {...userData} key={userData.id} />
+          )
+        }
+      </div>
     </div>
   );
 }
