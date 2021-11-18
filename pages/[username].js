@@ -14,7 +14,9 @@ import { useEffect, useState } from 'react';
 
 import styles from '../styles/pages/User.module.css';
 
-export default function User() {
+export default function User(props) {
+  const { currUser } = props;
+
   const auth = getAuth();
   const db = getFirestore();
   const storage = getStorage();
@@ -37,8 +39,12 @@ export default function User() {
     const userQuery = query(usersRef, where('username', '==', username));
     const docs = await getDocs(userQuery);
     // set user data
-    if (!docs.docs.length) setUserData(null);
-    else setUserData(docs.docs[0].data());
+    if (!docs.docs.length) {
+      setUserData(null);
+      return;
+    }
+    const userDoc = docs.docs[0];
+    setUserData({ ...userDoc.data(), uid: userDoc.id });
   }
 
   // uploads and sets image to given file
@@ -52,6 +58,13 @@ export default function User() {
     const url = await getDownloadURL(fileRef);
     const userRef = doc(usersRef, uid);
     await updateDoc(userRef, { cover: url });
+    getUserData();
+  }
+
+  // updates user in firebase
+  async function updateUser() {
+    const userRef = doc(usersRef, uid);
+    await updateDoc(userRef, { firstName, lastName, college, major });
   }
 
   // get user data on start
