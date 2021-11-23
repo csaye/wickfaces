@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  min-height: calc(100vh - var(--header));
+}
+
+.overview {
+  width: 400px;
+  background: #fcfcfc;
+}
+
+.posts {
+  flex-grow: 1;
+}

@@ -94,7 +94,7 @@ export default function User(props) {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.overview}>
         <Cover image={userData.cover} />
         <label>
           <UploadIcon />
@@ -153,7 +153,7 @@ export default function User(props) {
           </div>
         }
       </div>
-      <div>
+      <div className={styles.posts}>
       </div>
     </div>
   );
