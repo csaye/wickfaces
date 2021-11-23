@@ -1,7 +1,9 @@
 import Post from './Post';
 
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import {
+  getFirestore, collection, addDoc, query, orderBy
+} from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
 
@@ -19,7 +21,8 @@ export default function Posts(props) {
 
   // listen for posts
   const postsRef = collection(db, 'users', poster, 'posts');
-  const [posts] = useCollectionData(postsRef);
+  const postsQuery = query(postsRef, orderBy('date'));
+  const [posts] = useCollectionData(postsQuery);
 
   // creates post in firebase
   async function createPost() {
@@ -34,13 +37,15 @@ export default function Posts(props) {
 
   return (
     <div>
-      {
-        !posts.length ?
-        <p>No posts yet</p> :
-        posts.map(post =>
-          <Post {...post} />
-        )
-      }
+      <div className={styles.posts}>
+        {
+          !posts.length ?
+          <p>No posts yet</p> :
+          posts.map(post =>
+            <Post {...post} />
+          )
+        }
+      </div>
       {
         poster === uid &&
         <form onSubmit={e => {
