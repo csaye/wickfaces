@@ -1,7 +1,7 @@
 import Post from './Post';
 
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
 
@@ -21,6 +21,15 @@ export default function Posts(props) {
   const postsRef = collection(db, 'users', poster, 'posts');
   const [posts] = useCollectionData(postsRef);
 
+  // creates post in firebase
+  async function createPost() {
+    setText('');
+    await addDoc(postsRef, {
+      text: text,
+      date: new Date().getTime()
+    });
+  }
+
   if (!posts) return <p>Loading...</p>;
 
   return (
@@ -36,6 +45,7 @@ export default function Posts(props) {
         poster === uid &&
         <form onSubmit={e => {
           e.preventDefault();
+          createPost();
         }}>
           <textarea
             value={text}
