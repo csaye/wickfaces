@@ -1,0 +1,14 @@
+.container {
+  margin: 10px;
+  background: #efefef;
+  padding: 10px;
+}
+
+.container > p {
+  margin: 0;
+}
+
+.container > span {
+  color: #999;
+  font-size: 12px;
+}

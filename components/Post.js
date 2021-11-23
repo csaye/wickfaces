@@ -4,9 +4,9 @@ export default function Post(props) {
   const { text, date } = props;
 
   return (
-    <div>
+    <div className={styles.container}>
       <p>{text}</p>
-      <p>{new Date(date).toLocaleDateString()}</p>
+      <span>{new Date(date).toLocaleDateString()}</span>
     </div>
   );
 }
