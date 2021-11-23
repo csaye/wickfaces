@@ -1,11 +1,12 @@
+import Cover from '../components/Cover';
+import Posts from '../components/Posts';
+import Router from 'next/router';
+import Image from 'next/image';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import Router from 'next/router';
-import Image from 'next/image';
-import Cover from '../components/Cover';
 
 import { getAuth } from 'firebase/auth';
 import {
@@ -153,8 +154,7 @@ export default function User(props) {
           </div>
         }
       </div>
-      <div className={styles.posts}>
-      </div>
+      <Posts />
     </div>
   );
 }
