@@ -1,5 +1,6 @@
 import Cover from '../components/Cover';
 import Posts from '../components/Posts';
+import Modal from '../components/Modal';
 import Router from 'next/router';
 import Image from 'next/image';
 import EditIcon from '@mui/icons-material/Edit';
@@ -7,10 +8,11 @@ import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AddIcon from '@mui/icons-material/Add';
 
 import { getAuth } from 'firebase/auth';
 import {
-  getFirestore, collection, query, where, getDocs, doc, updateDoc
+  getFirestore, collection, query, where, getDocs, doc, updateDoc, addDoc
 } from 'firebase/firestore';
 import {
   getStorage, ref, uploadBytes, getDownloadURL
@@ -32,6 +34,8 @@ export default function User(props) {
 
   const [userData, setUserData] = useState(undefined);
   const [editing, setEditing] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [text, setText] = useState('');
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -81,6 +85,17 @@ export default function User(props) {
     setLastName(userData.lastName);
     setCollege(userData.college);
     setMajor(userData.major);
+  }
+
+  // creates post in firebase
+  async function createPost() {
+    setModalOpen(false);
+    setText('');
+    const postsRef = collection(usersRef, uid, 'posts');
+    await addDoc(postsRef, {
+      text: text,
+      date: new Date().getTime()
+    });
   }
 
   // route or get user data on start
@@ -153,8 +168,28 @@ export default function User(props) {
             }
           </div>
         }
+        {
+          userData.id === uid &&
+          <button onClick={() => setModalOpen(true)}>
+            <AddIcon />
+          </button>
+        }
       </div>
       <Posts poster={userData.id} />
+      <Modal open={modalOpen} setOpen={setModalOpen}>
+        <h1>New Post</h1>
+        <form onSubmit={e => {
+          e.preventDefault();
+          createPost();
+        }}>
+          <textarea
+            value={text}
+            onChange={e => setText(e.target.value)}
+            required
+          />
+          <button>Create Post</button>
+        </form>
+      </Modal>
     </div>
   );
 }
