@@ -3,6 +3,8 @@ import Fade from '@mui/material/Fade';
 import Backdrop from '@mui/material/Backdrop';
 import ClearIcon from '@mui/icons-material/Clear';
 
+import styles from '../styles/components/Modal.module.css';
+
 export default function Modal(props) {
   const { open, setOpen } = props;
 
