@@ -1,18 +1,14 @@
 import Post from './Post';
+import Modal from './Modal';
 
 import { getAuth } from 'firebase/auth';
-import {
-  getFirestore, collection, addDoc, query, orderBy
-} from 'firebase/firestore';
+import { getFirestore, collection, query, orderBy } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { useState } from 'react';
 
 import styles from '../styles/components/Posts.module.css';
 
 export default function Posts(props) {
   const { poster } = props;
-
-  const [text, setText] = useState('');
 
   const auth = getAuth();
   const db = getFirestore();
@@ -23,15 +19,6 @@ export default function Posts(props) {
   const postsRef = collection(db, 'users', poster, 'posts');
   const postsQuery = query(postsRef, orderBy('date', 'desc'));
   const [posts] = useCollectionData(postsQuery, { idField: 'id' });
-
-  // creates post in firebase
-  async function createPost() {
-    setText('');
-    await addDoc(postsRef, {
-      text: text,
-      date: new Date().getTime()
-    });
-  }
 
   if (!posts) return <p>Loading...</p>;
 
@@ -44,22 +31,6 @@ export default function Posts(props) {
           posts.map(post =>
             <Post {...post} key={post.id} />
           )
-        }
-      </div>
-      <div className={styles.createpost}>
-        {
-          poster === uid &&
-          <form onSubmit={e => {
-            e.preventDefault();
-            createPost();
-          }}>
-            <textarea
-              value={text}
-              onChange={e => setText(e.target.value)}
-              required
-            />
-            <button>Create Post</button>
-          </form>
         }
       </div>
     </div>

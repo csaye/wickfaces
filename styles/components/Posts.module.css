@@ -11,15 +11,3 @@
   padding: 10px;
   overflow: scroll;
 }
-
-.createpost {
-  height: 120px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.createpost > form {
-  display: flex;
-  align-items: center;
-}
