@@ -1,5 +1,13 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .posts {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 8px;
+  overflow: scroll;
 }

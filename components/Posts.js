@@ -22,7 +22,7 @@ export default function Posts(props) {
   // listen for posts
   const postsRef = collection(db, 'users', poster, 'posts');
   const postsQuery = query(postsRef, orderBy('date'));
-  const [posts] = useCollectionData(postsQuery);
+  const [posts] = useCollectionData(postsQuery, { idField: 'id' });
 
   // creates post in firebase
   async function createPost() {
@@ -36,13 +36,13 @@ export default function Posts(props) {
   if (!posts) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.posts}>
         {
           !posts.length ?
           <p>No posts yet</p> :
           posts.map(post =>
-            <Post {...post} />
+            <Post {...post} key={post.id} />
           )
         }
       </div>
