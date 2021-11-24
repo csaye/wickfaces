@@ -52,7 +52,7 @@ export default function User(props) {
       return;
     }
     const userDoc = docs.docs[0];
-    setUserData({ ...userDoc.data(), uid: userDoc.id });
+    setUserData({ ...userDoc.data(), id: userDoc.id });
   }
 
   // uploads and sets image to given file
@@ -143,7 +143,7 @@ export default function User(props) {
             {college && <p><SchoolIcon /> {college}</p>}
             {major && <p><MenuBookIcon /> {major}</p>}
             {
-              userData.uid === uid &&
+              userData.id === uid &&
               <button onClick={() => {
                 resetData();
                 setEditing(true);
@@ -154,7 +154,7 @@ export default function User(props) {
           </div>
         }
       </div>
-      <Posts />
+      <Posts poster={userData.id} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function Posts(props) {
 
   // listen for posts
   const postsRef = collection(db, 'users', poster, 'posts');
-  const postsQuery = query(postsRef, orderBy('date'));
+  const postsQuery = query(postsRef, orderBy('date', 'desc'));
   const [posts] = useCollectionData(postsQuery, { idField: 'id' });
 
   // creates post in firebase
