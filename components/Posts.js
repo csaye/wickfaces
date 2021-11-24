@@ -46,20 +46,22 @@ export default function Posts(props) {
           )
         }
       </div>
-      {
-        poster === uid &&
-        <form onSubmit={e => {
-          e.preventDefault();
-          createPost();
-        }}>
-          <textarea
-            value={text}
-            onChange={e => setText(e.target.value)}
-            required
-          />
-          <button>Create Post</button>
-        </form>
-      }
+      <div className={styles.createpost}>
+        {
+          poster === uid &&
+          <form onSubmit={e => {
+            e.preventDefault();
+            createPost();
+          }}>
+            <textarea
+              value={text}
+              onChange={e => setText(e.target.value)}
+              required
+            />
+            <button>Create Post</button>
+          </form>
+        }
+      </div>
     </div>
   );
 }
