@@ -175,7 +175,7 @@ export default function User(props) {
           </button>
         }
       </div>
-      <Posts poster={userData.id} />
+      <Posts postsRef={collection(usersRef, userData.id, 'posts')} />
       <Modal open={modalOpen} setOpen={setModalOpen}>
         <h1>New Post</h1>
         <form onSubmit={e => {
