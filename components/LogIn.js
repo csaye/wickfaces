@@ -39,8 +39,6 @@ export default function LogIn(props) {
       setError(getError(e));
       return;
     }
-    // if email verified, push to profile
-    if (auth.currentUser.emailVerified) pushToProfile();
   }
 
   return (

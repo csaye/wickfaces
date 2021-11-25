@@ -18,6 +18,10 @@ button, label {
   cursor: pointer;
 }
 
+textarea {
+  resize: none;
+}
+
 .flexfill {
   flex-grow: 1;
 }

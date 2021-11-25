@@ -1,6 +1,6 @@
 .modal {
   text-align: center;
-  background: var(--gray);
+  background: #efefef;
   max-width: 400px;
   position: absolute;
   top: 50%;
@@ -8,7 +8,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 20px 40px;
-  box-shadow: 0 0 10px var(--black);
+  box-shadow: 0 0 10px #000;
 }
 
 .modal > h1 {
@@ -26,8 +26,8 @@
   justify-content: center;
   border-radius: 50%;
   border: 0;
-  box-shadow: 0 0 10px var(--black);
-  background: var(--gray);
+  box-shadow: 0 0 10px #000;
+  background: #efefef;
 }
 
 .close:hover {
