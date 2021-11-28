@@ -30,4 +30,5 @@ textarea {
   --blue: #3aaaf2;
   --darkblue: #0f97eb;
   --header: 80px;
+  --page: calc(100vh - var(--header))
 }

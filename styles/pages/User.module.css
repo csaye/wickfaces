@@ -1,12 +1,14 @@
 .container {
   display: flex;
-  height: calc(100vh - var(--header));
+  min-height: var(--page);
 }
 
 .overview {
   width: 300px;
   background: #efefef;
   flex-shrink: 0;
+  position: fixed;
+  height: 100%;
   overflow: scroll;
 }
 
