@@ -9,6 +9,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 
 import { getAuth } from 'firebase/auth';
 import {
@@ -120,49 +121,52 @@ export default function User(props) {
         </div>
         {
           editing ?
-          <form onSubmit={e => {
-            e.preventDefault();
-            updateUser();
-          }}>
-            <input
-              placeholder="First name"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value)}
-              required
-            />
-            <input
-              placeholder="Last name"
-              value={lastName}
-              onChange={e => setLastName(e.target.value)}
-              required
-            />
-            <input
-              placeholder="College"
-              value={college}
-              onChange={e => setCollege(e.target.value)}
-            />
-            <input
-              placeholder="Major"
-              value={major}
-              onChange={e => setMajor(e.target.value)}
-            />
-            <button>
-              <SaveIcon />
-            </button>
-          </form> :
+          <div className={styles.editing}>
+            <form onSubmit={e => {
+              e.preventDefault();
+              updateUser();
+            }}>
+              <input
+                placeholder="First name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+                required
+              />
+              <input
+                placeholder="Last name"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+                required
+              />
+              <input
+                placeholder="College"
+                value={college}
+                onChange={e => setCollege(e.target.value)}
+              />
+              <input
+                placeholder="Major"
+                value={major}
+                onChange={e => setMajor(e.target.value)}
+              />
+              <button>
+                <SaveIcon />
+              </button>
+            </form>
+          </div> :
           <div className={styles.info}>
-            <h1>
-              {userData.firstName} {userData.lastName}
-              {' '}&apos;{userData.year}
-            </h1>
-            {college && <p><SchoolIcon /> {college}</p>}
-            {major && <p><MenuBookIcon /> {major}</p>}
+            <h1>{userData.firstName} {userData.lastName}</h1>
+            <p><SchoolIcon /><span>Class of &apos;{userData.year}</span></p>
+            {college && <p><LocationCityIcon /><span>{college}</span></p>}
+            {major && <p><MenuBookIcon /><span>{major}</span></p>}
             {
               userData.id === uid &&
-              <button onClick={() => {
-                resetData();
-                setEditing(true);
-              }}>
+              <button
+                className={styles.editbtn}
+                onClick={() => {
+                  resetData();
+                  setEditing(true);
+                }}
+              >
                 <EditIcon />
               </button>
             }
@@ -171,7 +175,7 @@ export default function User(props) {
         {
           userData.id === uid &&
           <button
-            className={styles.newpost}
+            className={styles.newbtn}
             onClick={() => setModalOpen(true)}
           >
             New Post
