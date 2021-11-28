@@ -1,6 +1,7 @@
+import Loading from '../components/Loading';
+import NewPostModal from '../components/NewPostModal';
 import Router from 'next/router';
 import Posts from '../components/Posts';
-import NewPostModal from '../components/NewPostModal';
 import AddIcon from '@mui/icons-material/Add';
 
 import { getFirestore, collection } from 'firebase/firestore';
@@ -23,7 +24,7 @@ export default function Board(props) {
   }, [currUser]);
 
   // load if no data yet
-  if (!currUser) return <p>Loading...</p>;
+  if (!currUser) return <Loading />;
 
   return (
     <div>

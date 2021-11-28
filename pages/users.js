@@ -1,3 +1,4 @@
+import Loading from '../components/Loading';
 import Router from 'next/router';
 import UserCard from '../components/UserCard';
 
@@ -27,7 +28,7 @@ export default function Users(props) {
   }, [currUser]);
 
   // load if no current user
-  if (!currUser || !usersData) return <p>Loading...</p>;
+  if (!currUser || !usersData) return <Loading />;
 
   return (
     <div className={styles.container}>

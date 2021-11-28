@@ -1,3 +1,4 @@
+import Loading from '../components/Loading';
 import Cover from '../components/Cover';
 import Posts from '../components/Posts';
 import NewPostModal from '../components/NewPostModal';
@@ -96,7 +97,7 @@ export default function User(props) {
   }, [currUser, username]);
 
   // return if invalid data
-  if (!currUser || userData === undefined) return <p>Loading...</p>;
+  if (!currUser || userData === undefined) return <Loading />;
   if (!userData) return <p>{username} not found</p>;
 
   return (

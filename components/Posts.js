@@ -1,3 +1,4 @@
+import Loading from './Loading';
 import Post from './Post';
 import Modal from './Modal';
 
@@ -17,7 +18,7 @@ export default function Posts(props) {
   const postsQuery = query(postsRef, orderBy('date', 'desc'));
   const [posts] = useCollectionData(postsQuery, { idField: 'id' });
 
-  if (!posts) return <p>Loading...</p>;
+  if (!posts) return <Loading />;
 
   return (
     <div className={styles.container}>
