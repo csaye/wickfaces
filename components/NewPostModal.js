@@ -15,7 +15,7 @@ export default function NewPostModal(props) {
 
   // creates new post in firebase
   async function createPost() {
-    setModalOpen(false);
+    setOpen(false);
     setText('');
     await addDoc(postsRef, {
       uid: auth.currentUser.uid,

@@ -170,7 +170,10 @@ export default function User(props) {
           </div>
         }
       </div>
-      <Posts postsRef={postsRef} />
+      <Posts
+        postsRef={postsRef}
+        allowPosts={userData.id === uid}
+      />
     </div>
   );
 }
