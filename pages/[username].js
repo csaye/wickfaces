@@ -169,10 +169,18 @@ export default function User(props) {
             }
           </div>
         }
+        {
+          userData.id === uid &&
+          <button onClick={() => setModalOpen(true)}>
+            <AddIcon />
+          </button>
+        }
       </div>
-      <Posts
+      <Posts postsRef={postsRef} />
+      <NewPostModal
         postsRef={postsRef}
-        allowPosts={userData.id === uid}
+        open={modalOpen}
+        setOpen={setModalOpen}
       />
     </div>
   );
