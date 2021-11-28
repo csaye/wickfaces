@@ -8,9 +8,10 @@ export default function PostModal(props) {
 
   return (
     <Modal open={open} setOpen={setOpen}>
-      <span>{text}</span>
-      <br />
-      <span>{new Date(date).toLocaleDateString()}</span>
+      <div className={styles.post}>
+        <p>{text}</p>
+        <span>{new Date(date).toLocaleDateString()}</span>
+      </div>
     </Modal>
   );
 }
