@@ -1,13 +1,17 @@
 import Router from 'next/router';
 import Posts from '../components/Posts';
+import NewPostModal from '../components/NewPostModal';
+import AddIcon from '@mui/icons-material/Add';
 
 import { getFirestore, collection } from 'firebase/firestore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from '../styles/pages/Board.module.css';
 
 export default function Board(props) {
   const { currUser } = props;
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   // get posts
   const db = getFirestore();
@@ -22,6 +26,16 @@ export default function Board(props) {
   if (!currUser) return <p>Loading...</p>;
 
   return (
-    <Posts postsRef={postsRef} />
+    <div>
+      <button onClick={() => setModalOpen(true)}>
+        <AddIcon />
+      </button>
+      <Posts postsRef={postsRef} />
+      <NewPostModal
+        postsRef={postsRef}
+        open={modalOpen}
+        setOpen={setModalOpen}
+      />
+    </div>
   );
 }
