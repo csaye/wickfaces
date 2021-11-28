@@ -78,6 +78,7 @@ export default function User(props) {
 
   // updates user in firebase
   async function updateUser() {
+    setEditing(false);
     const userRef = doc(usersRef, uid);
     await updateDoc(userRef, { firstName, lastName, college, major });
   }
@@ -103,16 +104,21 @@ export default function User(props) {
   return (
     <div className={styles.container}>
       <div className={styles.overview}>
-        <Cover image={userData.cover} />
-        <label>
-          <UploadIcon />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={e => setImage(e.target.files[0])}
-            hidden
-          />
-        </label>
+        <div className={styles.cover}>
+          <Cover image={userData.cover} />
+          {
+            userData.id === uid &&
+            <label>
+              <UploadIcon />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={e => setImage(e.target.files[0])}
+                hidden
+              />
+            </label>
+          }
+        </div>
         {
           editing ?
           <form onSubmit={e => {
@@ -145,7 +151,7 @@ export default function User(props) {
               <SaveIcon />
             </button>
           </form> :
-          <div>
+          <div className={styles.info}>
             <h1>
               {userData.firstName} {userData.lastName}
               {' '}&apos;{userData.year}
@@ -163,19 +169,8 @@ export default function User(props) {
             }
           </div>
         }
-        {
-          userData.id === uid &&
-          <button onClick={() => setModalOpen(true)}>
-            <AddIcon />
-          </button>
-        }
       </div>
       <Posts postsRef={postsRef} />
-      <NewPostModal
-        postsRef={postsRef}
-        open={modalOpen}
-        setOpen={setModalOpen}
-      />
     </div>
   );
 }
