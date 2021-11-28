@@ -126,18 +126,20 @@ export default function User(props) {
               e.preventDefault();
               updateUser();
             }}>
-              <input
-                placeholder="First name"
-                value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-                required
-              />
-              <input
-                placeholder="Last name"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-                required
-              />
+              <div className={styles.name}>
+                <input
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  required
+                />
+                <input
+                  placeholder="Last name"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                  required
+                />
+              </div>
               <input
                 placeholder="College"
                 value={college}

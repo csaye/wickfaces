@@ -27,6 +27,30 @@
   color: var(--blue);
 }
 
+.editing {
+  margin: 4px;
+}
+
+.name {
+  display: flex;
+}
+
+.name > input {
+  width: 100%;
+}
+
+.editing input {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  margin: 4px;
+}
+
+.editing > form > input {
+  width: calc(100% - 8px);
+}
+
 .info > h1 {
   margin: 16px 0;
 }
@@ -49,7 +73,7 @@
   text-overflow: ellipsis;
 }
 
-.editbtn {
+.editing button, .editbtn {
   border: 0;
   width: 36px;
   height: 36px;
@@ -62,7 +86,7 @@
   margin-bottom: 8px;
 }
 
-.editbtn:hover {
+.editing button:hover, .editbtn:hover {
   background: #ddd;
 }
 
