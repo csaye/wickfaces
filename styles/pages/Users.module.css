@@ -1,6 +1,35 @@
+.container {
+  margin: 16px;
+}
+
 .users {
   display: flex;
   flex-wrap: wrap;
-  margin: 16px;
-  justify-content: center;
+  margin: 0 auto;
+}
+
+@media (min-width: calc(272px * 1 + 32px)) {
+  .users {
+    width: calc(272px * 1);
+  }
+}
+@media (min-width: calc(272px * 2 + 32px)) {
+  .users {
+    width: calc(272px * 2);
+  }
+}
+@media (min-width: calc(272px * 3 + 32px)) {
+  .users {
+    width: calc(272px * 3);
+  }
+}
+@media (min-width: calc(272px * 4 + 32px)) {
+  .users {
+    width: calc(272px * 4);
+  }
+}
+@media (min-width: calc(272px * 5 + 32px)) {
+  .users {
+    width: calc(272px * 5);
+  }
 }
