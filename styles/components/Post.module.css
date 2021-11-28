@@ -1,6 +1,5 @@
 .container {
-  margin: 10px;
-  background: #efefef;
+  border-bottom: 2px solid #efefef;
   padding: 10px;
   position: relative;
 }
