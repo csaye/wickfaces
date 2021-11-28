@@ -2,7 +2,6 @@ import Loading from '../components/Loading';
 import NewPostModal from '../components/NewPostModal';
 import Router from 'next/router';
 import Posts from '../components/Posts';
-import AddIcon from '@mui/icons-material/Add';
 
 import { getFirestore, collection } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -27,10 +26,16 @@ export default function Board(props) {
   if (!currUser) return <Loading />;
 
   return (
-    <div>
-      <button onClick={() => setModalOpen(true)}>
-        <AddIcon />
-      </button>
+    <div className={styles.container}>
+      <div className={styles.sidepanel}>
+        <h1>Board</h1>
+        <button
+          className={styles.newbtn}
+          onClick={() => setModalOpen(true)}
+        >
+          New Post
+        </button>
+      </div>
       <Posts postsRef={postsRef} />
       <NewPostModal
         postsRef={postsRef}

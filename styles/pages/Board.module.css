@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+
+.sidepanel {
+  position: fixed;
+  width: 300px;
+  height: var(--page);
+  text-align: center;
+  padding: 30px;
+}
+
+.sidepanel > h1 {
+  margin: 0;
+}
+
+.newbtn {
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+
+.newbtn:hover {
+  background: var(--darkblue);
+}
+
+.newpost:active {
+  transform: scale(0.98);
+}
