@@ -5,11 +5,47 @@
 
 .overview {
   width: 300px;
-  background: #efefef;
   flex-shrink: 0;
   position: fixed;
   height: 100%;
   overflow: scroll;
+  text-align: center;
+  padding: 30px;
+}
+
+.cover {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cover > label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cover > label:hover {
+  color: var(--blue);
+}
+
+.info > h1 {
+  margin: 0;
+}
+
+.newpost {
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.newpost:hover {
+  background: var(--darkblue);
+}
+
+.newpost:active {
+  transform: scale(0.98);
 }
 
 .posts {

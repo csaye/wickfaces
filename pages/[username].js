@@ -9,7 +9,6 @@ import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import AddIcon from '@mui/icons-material/Add';
 
 import { getAuth } from 'firebase/auth';
 import {
@@ -171,8 +170,11 @@ export default function User(props) {
         }
         {
           userData.id === uid &&
-          <button onClick={() => setModalOpen(true)}>
-            <AddIcon />
+          <button
+            className={styles.newpost}
+            onClick={() => setModalOpen(true)}
+          >
+            New Post
           </button>
         }
       </div>
