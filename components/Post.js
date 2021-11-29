@@ -4,14 +4,23 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { useState } from 'react';
+import { arrayUnion, arrayRemove, updateDoc } from 'firebase/firestore';
 
 import styles from '../styles/components/Post.module.css';
 
 export default function Post(props) {
-  const { post, currUser } = props;
+  const { post, postRef, currUser } = props;
   const { text, date, uid, username, name, likes } = post;
 
   const [modalOpen, setModalOpen] = useState(false);
+
+  // toggles like on post
+  async function toggleLike() {
+    await updateDoc(postRef, {
+      likes:
+        (likes.includes(currUser.uid) ? arrayRemove : arrayUnion)(currUser.uid)
+    });
+  }
 
   function Content() {
     return (
@@ -28,15 +37,20 @@ export default function Post(props) {
           {' '}
           {new Date(date).toLocaleTimeString()}
         </span>
-        {
-          likes.includes(currUser.uid) ?
-          <button className={styles.heart}>
-            <FavoriteIcon />
-          </button> :
-          <button className={styles.heart}>
+        <span>{likes.length}</span>
+        <button
+          className={styles.heart}
+          onClick={e => {
+            e.stopPropagation();
+            toggleLike();
+          }}
+        >
+          {
+            likes.includes(currUser.uid) ?
+            <FavoriteIcon /> :
             <FavoriteBorderIcon />
-          </button>
-        }
+          }
+        </button>
       </div>
     )
   }
