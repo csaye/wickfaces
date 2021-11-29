@@ -30,6 +30,22 @@ h1 {
   flex-grow: 1;
 }
 
+.bluebutton {
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.bluebutton:hover {
+  background: var(--darkblue);
+}
+
+.bluebutton:active {
+  transform: scale(0.98);
+}
+
 :root {
   --blue: #3aaaf2;
   --darkblue: #0f97eb;

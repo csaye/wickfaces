@@ -90,22 +90,6 @@
   background: #ddd;
 }
 
-.newbtn {
-  border: 0;
-  background: var(--blue);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 20px;
-}
-
-.newbtn:hover {
-  background: var(--darkblue);
-}
-
-.newpost:active {
-  transform: scale(0.98);
-}
-
 .posts {
   flex-grow: 1;
 }

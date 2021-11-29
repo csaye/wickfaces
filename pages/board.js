@@ -30,7 +30,7 @@ export default function Board(props) {
       <div className={styles.sidepanel}>
         <h1>Board</h1>
         <button
-          className={styles.newbtn}
+          className="bluebutton"
           onClick={() => setModalOpen(true)}
         >
           New Post

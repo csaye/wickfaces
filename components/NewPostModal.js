@@ -35,7 +35,9 @@ export default function NewPostModal(props) {
           onChange={e => setText(e.target.value)}
           required
         />
-        <button>Create Post</button>
+        <button className="bluebutton">
+          Create Post
+        </button>
       </form>
     </Modal>
   );

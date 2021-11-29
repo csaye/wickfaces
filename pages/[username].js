@@ -172,7 +172,7 @@ export default function User(props) {
         {
           userData.uid === uid &&
           <button
-            className={styles.newbtn}
+            className="bluebutton"
             onClick={() => setModalOpen(true)}
           >
             New Post
