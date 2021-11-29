@@ -22,6 +22,10 @@ textarea {
   resize: none;
 }
 
+h1 {
+  font-weight: 900;
+}
+
 .flexfill {
   flex-grow: 1;
 }

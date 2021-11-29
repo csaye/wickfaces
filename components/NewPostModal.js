@@ -1,24 +1,23 @@
 import Modal from './Modal';
 
 import { useState } from 'react';
-import { getAuth } from 'firebase/auth';
 import { addDoc } from 'firebase/firestore';
 
 import styles from '../styles/components/NewPostModal.module.css';
 
 export default function NewPostModal(props) {
-  const { open, setOpen, postsRef } = props;
+  const { open, setOpen, postsRef, currUser } = props;
 
   const [text, setText] = useState('');
-
-  const auth = getAuth();
 
   // creates new post in firebase
   async function createPost() {
     setOpen(false);
     setText('');
     await addDoc(postsRef, {
-      uid: auth.currentUser.uid,
+      name: `${currUser.firstName} ${currUser.lastName}`,
+      username: currUser.username,
+      uid: currUser.uid,
       text: text,
       date: new Date().getTime()
     });

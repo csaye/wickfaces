@@ -38,6 +38,7 @@ export default function Board(props) {
       </div>
       <Posts postsRef={postsRef} />
       <NewPostModal
+        currUser={currUser}
         postsRef={postsRef}
         open={modalOpen}
         setOpen={setModalOpen}

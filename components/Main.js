@@ -28,7 +28,7 @@ function MainAuthed(props) {
 
   // get curr user
   const currUser = !userDoc ? undefined :
-  userDoc.exists() ? userDoc.data() : null;
+  userDoc.exists() ? { ...userDoc.data(), uid: userDoc.id } : null;
 
   return (
     auth.currentUser.emailVerified ?

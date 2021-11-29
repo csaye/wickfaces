@@ -1,5 +1,4 @@
 .container {
-  width: 480px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -13,6 +12,6 @@
   padding: 10px 0;
 }
 
-.posts > div:last-of-type {
+.posts > div:last-of-type > div {
   border-bottom: 0;
 }
