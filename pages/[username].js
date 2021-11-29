@@ -46,7 +46,7 @@ export default function User(props) {
   const { username } = router.query;
 
   const postsRef = userData ?
-    collection(usersRef, userData.id, 'posts') : undefined;
+    collection(usersRef, userData.uid, 'posts') : undefined;
 
   // gets user data from firebase
   async function getUserData() {
@@ -59,7 +59,7 @@ export default function User(props) {
       return;
     }
     const userDoc = docs.docs[0];
-    setUserData({ ...userDoc.data(), id: userDoc.id });
+    setUserData({ ...userDoc.data(), uid: userDoc.id });
   }
 
   // uploads and sets image to given file
@@ -69,11 +69,6 @@ export default function User(props) {
     const filePath = `covers/${uid}`;
     const fileRef = ref(storage, filePath);
     await uploadBytes(fileRef, image);
-    // update image
-    const url = await getDownloadURL(fileRef);
-    const userRef = doc(usersRef, uid);
-    await updateDoc(userRef, { cover: url });
-    getUserData();
   }
 
   // updates user in firebase
@@ -105,9 +100,9 @@ export default function User(props) {
     <div className={styles.container}>
       <div className={styles.overview}>
         <div className={styles.cover}>
-          <Cover image={userData.cover} />
+          <Cover uid={userData.uid} />
           {
-            userData.id === uid &&
+            userData.uid === uid &&
             <label>
               <UploadIcon />
               <input
@@ -161,7 +156,7 @@ export default function User(props) {
             {college && <p><LocationCityIcon /><span>{college}</span></p>}
             {major && <p><MenuBookIcon /><span>{major}</span></p>}
             {
-              userData.id === uid &&
+              userData.uid === uid &&
               <button
                 className={styles.editbtn}
                 onClick={() => {
@@ -175,7 +170,7 @@ export default function User(props) {
           </div>
         }
         {
-          userData.id === uid &&
+          userData.uid === uid &&
           <button
             className={styles.newbtn}
             onClick={() => setModalOpen(true)}
@@ -186,6 +181,7 @@ export default function User(props) {
       </div>
       <Posts postsRef={postsRef} />
       <NewPostModal
+        currUser={currUser}
         postsRef={postsRef}
         open={modalOpen}
         setOpen={setModalOpen}
