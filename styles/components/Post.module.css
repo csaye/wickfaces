@@ -1,8 +1,14 @@
+.outer {
+  cursor: pointer;
+}
+
 .container {
   border-bottom: 2px solid #efefef;
   padding: 10px;
   position: relative;
-  cursor: pointer;
+  background: #fff;
+  text-align: left;
+  width: 480px;
 }
 
 .container:hover {

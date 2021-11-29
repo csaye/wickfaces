@@ -10,12 +10,9 @@ export default function Post(props) {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  return (
-    <>
-      <div
-        onClick={() => setModalOpen(true)}
-        className={styles.container}
-      >
+  function Content() {
+    return (
+      <div className={styles.container}>
         <p className={styles.user}>
           <Link href={`/${username}`}>
             <a onClick={e => e.stopPropagation()}>{name}</a>
@@ -29,7 +26,22 @@ export default function Post(props) {
           {new Date(date).toLocaleTimeString()}
         </span>
       </div>
-      <PostModal post={props} open={modalOpen} setOpen={setModalOpen} />
+    )
+  }
+
+  return (
+    <>
+      <div
+        className={styles.outer}
+        onClick={() => setModalOpen(true)}
+      >
+        <Content />
+      </div>
+      <PostModal
+        Content={Content}
+        open={modalOpen}
+        setOpen={setModalOpen}
+      />
     </>
   );
 }
