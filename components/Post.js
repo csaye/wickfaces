@@ -17,10 +17,10 @@ export default function Post(props) {
         className={styles.container}
       >
         <p className={styles.user}>
-          <span>{name}</span>
-          <Link href={`/${username}0`}>
-            <a onClick={e => e.stopPropagation()}>@{username}</a>
+          <Link href={`/${username}`}>
+            <a onClick={e => e.stopPropagation()}>{name}</a>
           </Link>
+          <span>@{username}</span>
         </p>
         <p className={styles.text}>{text}</p>
         <span className={styles.date}>

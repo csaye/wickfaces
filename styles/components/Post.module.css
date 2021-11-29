@@ -9,11 +9,29 @@
   background: #fdfdfd;
 }
 
-.container > p {
+.user {
   margin: 0;
 }
 
-.container > span {
+.user > a {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.user > a:hover {
+  text-decoration: underline;
+}
+
+.user > span {
+  font-size: 12px;
+  color: #999;
+}
+
+.text {
+  margin: 4px 0 2px 0;
+}
+
+.date {
   color: #999;
   font-size: 12px;
 }
