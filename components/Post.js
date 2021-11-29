@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import PostModal from './PostModal';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { useState } from 'react';
 
 import styles from '../styles/components/Post.module.css';
 
 export default function Post(props) {
-  const { text, date, uid, username, name } = props;
+  const { post, currUser } = props;
+  const { text, date, uid, username, name, likes } = post;
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -25,6 +28,15 @@ export default function Post(props) {
           {' '}
           {new Date(date).toLocaleTimeString()}
         </span>
+        {
+          likes.includes(currUser.uid) ?
+          <button className={styles.heart}>
+            <FavoriteIcon />
+          </button> :
+          <button className={styles.heart}>
+            <FavoriteBorderIcon />
+          </button>
+        }
       </div>
     )
   }

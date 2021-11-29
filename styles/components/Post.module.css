@@ -8,7 +8,7 @@
   position: relative;
   background: #fff;
   text-align: left;
-  width: 480px;
+  width: 400px;
 }
 
 .container:hover {
@@ -40,4 +40,21 @@
 .date {
   color: #999;
   font-size: 12px;
+}
+
+.heart {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart:hover {
+  color: red;
 }
