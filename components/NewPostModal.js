@@ -26,13 +26,19 @@ export default function NewPostModal(props) {
   return (
     <Modal open={open} setOpen={setOpen}>
       <h1>New Post</h1>
-      <form onSubmit={e => {
-        e.preventDefault();
-        createPost();
-      }}>
+      <form
+        className={styles.form}
+        onSubmit={e => {
+          e.preventDefault();
+          createPost();
+        }}
+      >
         <textarea
+          placeholder="What's happening?"
           value={text}
           onChange={e => setText(e.target.value)}
+          cols="32"
+          rows="4"
           required
         />
         <button className="bluebutton">

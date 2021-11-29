@@ -22,6 +22,10 @@ textarea {
   resize: none;
 }
 
+textarea, input {
+  font-family: 'Arial', sans-serif;
+}
+
 h1 {
   font-weight: 900;
 }
@@ -44,6 +48,10 @@ h1 {
 
 .bluebutton:active {
   transform: scale(0.98);
+}
+
+.MuiModal-root {
+  overflow: auto;
 }
 
 :root {
