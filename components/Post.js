@@ -37,7 +37,7 @@ export default function Post(props) {
           {' '}
           {new Date(date).toLocaleTimeString()}
         </span>
-        <span>{likes.length}</span>
+        <span className={styles.likes}>{likes.length}</span>
         <button
           className={styles.heart}
           onClick={e => {

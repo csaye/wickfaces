@@ -42,6 +42,12 @@
   font-size: 12px;
 }
 
+.likes {
+  position: absolute;
+  right: 32px;
+  bottom: 8px;
+}
+
 .heart {
   position: absolute;
   right: 0;
@@ -57,4 +63,8 @@
 
 .heart:hover {
   color: red;
+}
+
+.heart:active {
+  transform: scale(0.9);
 }

@@ -36,7 +36,7 @@ export default function Board(props) {
           New Post
         </button>
       </div>
-      <Posts postsRef={postsRef} />
+      <Posts postsRef={postsRef} currUser={currUser} />
       <NewPostModal
         currUser={currUser}
         postsRef={postsRef}

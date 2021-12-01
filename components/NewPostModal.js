@@ -19,7 +19,8 @@ export default function NewPostModal(props) {
       username: currUser.username,
       uid: currUser.uid,
       text: text,
-      date: new Date().getTime()
+      date: new Date().getTime(),
+      likes: []
     });
   }
 
