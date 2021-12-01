@@ -76,6 +76,7 @@ export default function Post(props) {
         Content={Content}
         open={modalOpen}
         setOpen={setModalOpen}
+        postRef={postRef}
       />
     </>
   );
