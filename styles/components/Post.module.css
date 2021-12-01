@@ -9,10 +9,18 @@
   background: #fff;
   text-align: left;
   width: 400px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .container:hover {
   background: #fdfdfd;
+}
+
+.profile {
+  margin-right: 8px;
+  height: 64px;
+  flex-shrink: 0;
 }
 
 .user {

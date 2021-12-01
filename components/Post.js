@@ -33,32 +33,34 @@ export default function Post(props) {
             height="64"
           />
         </div>
-        <p className={styles.user}>
-          <Link href={`/${username}`}>
-            <a onClick={e => e.stopPropagation()}>{name}</a>
-          </Link>
-          <span>@{username}</span>
-        </p>
-        <p className={styles.text}>{text}</p>
-        <span className={styles.date}>
-          {new Date(date).toLocaleDateString()}
-          {' '}
-          {new Date(date).toLocaleTimeString()}
-        </span>
-        <span className={styles.likes}>{likes.length}</span>
-        <button
-          className={styles.heart}
-          onClick={e => {
-            e.stopPropagation();
-            toggleLike();
-          }}
-        >
-          {
-            likes.includes(currUser.uid) ?
-            <FavoriteIcon /> :
-            <FavoriteBorderIcon />
-          }
-        </button>
+        <div className={styles.content}>
+          <p className={styles.user}>
+            <Link href={`/${username}`}>
+              <a onClick={e => e.stopPropagation()}>{name}</a>
+            </Link>
+            <span>@{username}</span>
+          </p>
+          <p className={styles.text}>{text}</p>
+          <span className={styles.date}>
+            {new Date(date).toLocaleDateString()}
+            {' '}
+            {new Date(date).toLocaleTimeString()}
+          </span>
+          <span className={styles.likes}>{likes.length}</span>
+          <button
+            className={styles.heart}
+            onClick={e => {
+              e.stopPropagation();
+              toggleLike();
+            }}
+          >
+            {
+              likes.includes(currUser.uid) ?
+              <FavoriteIcon /> :
+              <FavoriteBorderIcon />
+            }
+          </button>
+        </div>
       </div>
     )
   }
