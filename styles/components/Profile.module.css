@@ -1,0 +1,8 @@
+.container {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background: center center / cover url('/img/blank/profile.png');
+  border-radius: 50%;
+  overflow: hidden;
+}
