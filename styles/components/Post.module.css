@@ -19,8 +19,13 @@
 
 .profile {
   margin-right: 8px;
-  height: 64px;
   flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile:hover {
+  transform: scale(1.05);
 }
 
 .user {
@@ -42,7 +47,7 @@
 }
 
 .text {
-  margin: 4px 0 2px 0;
+  margin: 2px 0;
 }
 
 .date {

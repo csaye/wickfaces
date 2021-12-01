@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PostModal from './PostModal';
+import Profile from './Profile';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -26,13 +27,11 @@ export default function Post(props) {
   function Content() {
     return (
       <div className={styles.container}>
-        <div className={styles.profile}>
-          <Image
-            src={profile ?? '/img/blank/profile.png'}
-            width="64"
-            height="64"
-          />
-        </div>
+        <Link href={`/${username}`}>
+          <a className={styles.profile} onClick={e => e.stopPropagation()}>
+            <Profile src={profile} />
+          </a>
+        </Link>
         <div className={styles.content}>
           <p className={styles.user}>
             <Link href={`/${username}`}>

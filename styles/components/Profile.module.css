@@ -6,3 +6,7 @@
   border-radius: 50%;
   overflow: hidden;
 }
+
+.container span, .container img {
+  border-radius: 50%;
+}
