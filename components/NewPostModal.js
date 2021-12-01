@@ -16,6 +16,7 @@ export default function NewPostModal(props) {
     setText('');
     await addDoc(postsRef, {
       name: `${currUser.firstName} ${currUser.lastName}`,
+      profile: currUser.profile,
       username: currUser.username,
       uid: currUser.uid,
       text: text,

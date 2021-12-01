@@ -1,13 +1,13 @@
 import Loading from './Loading';
 import Post from './Post';
 
-import { getFirestore, query, orderBy } from 'firebase/firestore';
+import { getFirestore, query, orderBy, doc } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import styles from '../styles/components/Posts.module.css';
 
 export default function Posts(props) {
-  const { postsRef, allowPosts } = props;
+  const { postsRef, allowPosts, currUser } = props;
 
   const db = getFirestore();
 
@@ -24,7 +24,12 @@ export default function Posts(props) {
           !posts.length ?
           <p>No posts yet</p> :
           posts.map(post =>
-            <Post {...post} key={post.id} />
+            <Post
+              post={post}
+              postRef={doc(postsRef, post.id)}
+              currUser={currUser}
+              key={post.id}
+            />
           )
         }
       </div>

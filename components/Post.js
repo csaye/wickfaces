@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import PostModal from './PostModal';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -10,7 +11,7 @@ import styles from '../styles/components/Post.module.css';
 
 export default function Post(props) {
   const { post, postRef, currUser } = props;
-  const { text, date, uid, username, name, likes } = post;
+  const { text, date, uid, username, name, likes, profile } = post;
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -25,6 +26,13 @@ export default function Post(props) {
   function Content() {
     return (
       <div className={styles.container}>
+        <div className={styles.profile}>
+          <Image
+            src={profile ?? '/img/blank/profile.png'}
+            width="64"
+            height="64"
+          />
+        </div>
         <p className={styles.user}>
           <Link href={`/${username}`}>
             <a onClick={e => e.stopPropagation()}>{name}</a>

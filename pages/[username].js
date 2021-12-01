@@ -193,7 +193,7 @@ export default function User(props) {
           </button>
         }
       </div>
-      <Posts postsRef={postsRef} />
+      <Posts postsRef={postsRef} currUser={currUser} />
       <NewPostModal
         currUser={currUser}
         postsRef={postsRef}
