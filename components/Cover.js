@@ -3,18 +3,16 @@ import Image from 'next/image';
 import styles from '../styles/components/Cover.module.css';
 
 export default function Cover(props) {
-  const { uid } = props;
-
-  const url = `https://firebasestorage.googleapis.com/v0/b/wickfaces.appspot.com/o/covers%2F${uid}?alt=media`;
+  const { src } = props;
 
   return (
     <div className={styles.container}>
       {
-        uid &&
+        src &&
         <Image
           placeholder="blur"
-          blurDataURL={url}
-          src={url}
+          blurDataURL={src}
+          src={src}
           layout="fill"
           objectFit="cover"
         />

@@ -12,7 +12,7 @@ export default function UserCard(props) {
       <Link href={`/${username}`}>
         <a>
           <p>{firstName} {lastName} &apos;{year}</p>
-          <Cover image={cover} />
+          <Cover src={cover} />
         </a>
       </Link>
     </div>

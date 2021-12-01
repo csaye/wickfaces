@@ -48,6 +48,7 @@ export default function Register(props) {
     const joined = new Date().getTime();
     setDoc(userRef, {
       firstName, lastName, username, year, joined,
+      profile: auth.currentUser.photoURL, cover: null,
       college: '', major: ''
     });
     sendEmailVerification(auth.currentUser);

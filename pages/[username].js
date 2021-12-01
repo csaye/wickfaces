@@ -69,6 +69,11 @@ export default function User(props) {
     const filePath = `covers/${uid}`;
     const fileRef = ref(storage, filePath);
     await uploadBytes(fileRef, image);
+    // update image
+    const url = await getDownloadURL(fileRef);
+    const userRef = doc(usersRef, uid);
+    await updateDoc(userRef, { cover: url });
+    getUserData();
   }
 
   // updates user in firebase
@@ -100,7 +105,7 @@ export default function User(props) {
     <div className={styles.container}>
       <div className={styles.overview}>
         <div className={styles.cover}>
-          <Cover uid={userData.uid} />
+          <Cover src={userData.cover} />
           {
             userData.uid === uid &&
             <label>
