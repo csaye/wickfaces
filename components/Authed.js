@@ -1,3 +1,4 @@
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import PeopleIcon from '@mui/icons-material/People';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -11,7 +12,7 @@ export default function Authed(props) {
 
   return (
     <div className={styles.container}>
-      <h1>Welcome to Wickfaces!</h1>
+      <h1><EmojiPeopleIcon />Welcome to Wickfaces!</h1>
       <p>To get started:</p>
       <div className={styles.links}>
         <Link href="/users">

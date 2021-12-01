@@ -1,3 +1,5 @@
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
+
 import styles from '../styles/components/Verify.module.css';
 
 import { useState } from 'react';
@@ -10,7 +12,7 @@ export default function Verify() {
 
   return (
     <div className={styles.container}>
-      <h1>You&apos;re almost there.</h1>
+      <h1><LibraryAddCheckIcon />You&apos;re almost there.</h1>
       <p className={styles.check}>
         Check <u>{auth.currentUser.email}</u> to verify your account.
       </p>

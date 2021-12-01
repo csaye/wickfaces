@@ -10,6 +10,8 @@
 .container > h1 {
   margin: 0 0 10px 0;
   font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .container > p {
@@ -30,6 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
 }
 
 .links > a:active {
@@ -55,8 +58,4 @@
 .links > a:nth-of-type(4) {
   background: #2196f3;
   margin: 4px 0 0 4px;
-}
-
-.links > a:hover {
-  color: #fff;
 }
