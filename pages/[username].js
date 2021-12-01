@@ -34,6 +34,7 @@ export default function User(props) {
   const uid = auth.currentUser?.uid;
 
   const [userData, setUserData] = useState(undefined);
+  const [coverSrc, setCoverSrc] = useState(undefined);
   const [editing, setEditing] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -60,11 +61,13 @@ export default function User(props) {
     }
     const userDoc = docs.docs[0];
     setUserData({ ...userDoc.data(), uid: userDoc.id });
+    setCoverSrc(userDoc.data().cover ?? null);
   }
 
   // uploads and sets image to given file
   async function setImage(image) {
     if (!image) return;
+    setCoverSrc(undefined);
     // upload image
     const filePath = `covers/${uid}`;
     const fileRef = ref(storage, filePath);
@@ -105,7 +108,7 @@ export default function User(props) {
     <div className={styles.container}>
       <div className={styles.overview}>
         <div className={styles.cover}>
-          <Cover src={userData.cover} />
+          <Cover src={coverSrc} />
           {
             userData.uid === uid &&
             <label>
@@ -158,8 +161,14 @@ export default function User(props) {
           <div className={styles.info}>
             <h1>{userData.firstName} {userData.lastName}</h1>
             <p><SchoolIcon /><span>Class of &apos;{userData.year}</span></p>
-            {college && <p><LocationCityIcon /><span>{college}</span></p>}
-            {major && <p><MenuBookIcon /><span>{major}</span></p>}
+            {
+              userData.college &&
+              <p><LocationCityIcon /><span>{userData.college}</span></p>
+            }
+            {
+              userData.major &&
+              <p><MenuBookIcon /><span>{userData.major}</span></p>
+            }
             {
               userData.uid === uid &&
               <button
