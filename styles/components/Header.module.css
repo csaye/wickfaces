@@ -47,3 +47,10 @@
 .container > button:hover {
   color: var(--blue);
 }
+
+.dial {
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  margin-right: 12px;
+}

@@ -4,7 +4,6 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Tooltip from '@mui/material/Tooltip';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 
 import { getAuth, signOut } from 'firebase/auth';
 
@@ -48,18 +47,19 @@ export default function Header(props) {
       }
       {
         (currUser || (auth.currentUser && !auth.currentUser.emailVerified)) &&
-        <SpeedDial
-          ariaLabel="SpeedDial"
-          icon={<SpeedDialIcon />}
-          direction="down"
-        >
-          <SpeedDialAction
-            onClick={() => signOut(auth)}
-            icon={<ExitToAppIcon />}
-            name="Log Out"
-            tooltipTitle="Log Out"
-          />
-        </SpeedDial>
+        <div className={styles.dial}>
+          <SpeedDial
+            ariaLabel="SpeedDial"
+            direction="down"
+          >
+            <SpeedDialAction
+              onClick={() => signOut(auth)}
+              icon={<ExitToAppIcon />}
+              name="Log Out"
+              tooltipTitle="Log Out"
+            />
+          </SpeedDial>
+        </div>
       }
     </div>
   );
