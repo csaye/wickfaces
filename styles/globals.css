@@ -34,6 +34,20 @@ h1 {
   flex-grow: 1;
 }
 
+.biginput {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.smlinput {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
 .bluebutton {
   border: 0;
   background: var(--blue);
@@ -48,10 +62,6 @@ h1 {
 
 .bluebutton:active {
   transform: scale(0.98);
-}
-
-.MuiModal-root {
-  overflow: auto;
 }
 
 :root {

@@ -2,8 +2,10 @@ import Loading from '../components/Loading';
 import Cover from '../components/Cover';
 import Posts from '../components/Posts';
 import NewPostModal from '../components/NewPostModal';
+import Page404 from '../pages/404';
 import Router from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import UploadIcon from '@mui/icons-material/Upload';
@@ -102,7 +104,7 @@ export default function User(props) {
 
   // return if invalid data
   if (!currUser || userData === undefined) return <Loading />;
-  if (!userData) return <p>{username} not found</p>;
+  if (!userData) return <Page404 />;
 
   return (
     <div className={styles.container}>

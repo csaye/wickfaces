@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Router from 'next/router';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Tooltip from '@mui/material/Tooltip';
 import SpeedDial from '@mui/material/SpeedDial';
@@ -74,6 +75,13 @@ export default function Header(props) {
           <SpeedDial
             ariaLabel="SpeedDial"
             direction="down"
+            onClick={e => {
+              // if root dial
+              if (e.target.ariaLabel === 'SpeedDial') {
+                // go to home page
+                Router.push(`/${currUser.username}`);
+              }
+            }}
             sx={{
               '& > button': {
                 background: `center center / cover url(${

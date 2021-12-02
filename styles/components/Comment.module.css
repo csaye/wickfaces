@@ -1,8 +1,8 @@
 .container {
   text-align: left;
   background: #fff;
-  margin: 10px 0;
   padding: 10px;
+  border-bottom: 2px solid #efefef;
 }
 
 .container > a {
