@@ -4,9 +4,12 @@ import PostModal from './PostModal';
 import Profile from './Profile';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useState } from 'react';
-import { arrayUnion, arrayRemove, updateDoc } from 'firebase/firestore';
+import {
+  arrayUnion, arrayRemove, updateDoc, deleteDoc
+} from 'firebase/firestore';
 
 import styles from '../styles/components/Post.module.css';
 
@@ -22,6 +25,12 @@ export default function Post(props) {
       likes:
         (likes.includes(currUser.uid) ? arrayRemove : arrayUnion)(currUser.uid)
     });
+  }
+
+  // deletes post in firebase
+  async function deletePost() {
+    if (!window.confirm('Delete post?')) return;
+    await deleteDoc(postRef);
   }
 
   function Content() {
@@ -59,6 +68,15 @@ export default function Post(props) {
               <FavoriteBorderIcon />
             }
           </button>
+          {
+            currUser.uid === uid &&
+            <button onClick={e => {
+              e.stopPropagation();
+              deletePost();
+            }}>
+              <DeleteIcon />
+            </button>
+          }
         </div>
       </div>
     )

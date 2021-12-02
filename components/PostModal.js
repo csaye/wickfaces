@@ -3,7 +3,7 @@ import Comment from './Comment';
 import Modal from './Modal';
 
 import {
-  getFirestore, deleteDoc, collection, query, orderBy, addDoc
+  getFirestore, collection, query, orderBy, addDoc
 } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
@@ -22,12 +22,6 @@ export default function PostModal(props) {
   const commentsQuery = query(commentsRef, orderBy('date', 'desc'));
   const [comments] = useCollectionData(commentsQuery, { idField: 'id' });
 
-  // deletes post in firebase
-  async function deletePost() {
-    if (!window.confirm('Delete post?')) return;
-    await deleteDoc(postRef);
-  }
-
   // adds a comment to post
   async function addComment() {
     setText('');
@@ -45,9 +39,6 @@ export default function PostModal(props) {
   return (
     <Modal open={open} setOpen={setOpen}>
       <Content />
-      <button onClick={deletePost}>
-        Delete Post
-      </button>
       {
         !comments ?
         <Loading /> :
