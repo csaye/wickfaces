@@ -39,7 +39,7 @@ export default function PostModal(props) {
   return (
     <Dialog open={open} setOpen={setOpen}>
       <Content />
-      <h1>Comments</h1>
+      <h1 className={styles.title}>Comments</h1>
       <div className={styles.comments}>
         {
           !comments ?
