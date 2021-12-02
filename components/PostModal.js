@@ -1,6 +1,6 @@
 import Loading from './Loading';
 import Comment from './Comment';
-import Modal from './Modal';
+import Dialog from './Dialog';
 
 import {
   getFirestore, collection, query, orderBy, addDoc
@@ -37,26 +37,33 @@ export default function PostModal(props) {
   }
 
   return (
-    <Modal open={open} setOpen={setOpen}>
+    <Dialog open={open} setOpen={setOpen}>
       <Content />
-      {
-        !comments ?
-        <Loading /> :
-        comments.map(comment =>
-          <Comment comment={comment} key={comment.id} />
-        )
-      }
-      <form onSubmit={e => {
-        e.preventDefault();
-        addComment();
-      }}>
-        <input
-          value={text}
-          onChange={e => setText(e.target.value)}
-          required
-        />
-        <button>Post Comment</button>
-      </form>
-    </Modal>
+      <h1>Comments</h1>
+      <div className={styles.comments}>
+        {
+          !comments ?
+          <Loading /> :
+          comments.map(comment =>
+            <Comment comment={comment} key={comment.id} />
+          )
+        }
+      </div>
+      <div className={styles.form}>
+        <form onSubmit={e => {
+          e.preventDefault();
+          addComment();
+        }}>
+          <input
+            className="smlinput"
+            placeholder="Comment"
+            value={text}
+            onChange={e => setText(e.target.value)}
+            required
+          />
+          <button className="bluebutton">Post Comment</button>
+        </form>
+      </div>
+    </Dialog>
   );
 }
