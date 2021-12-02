@@ -61,10 +61,9 @@
   bottom: 8px;
 }
 
-.heart {
+.heart, .delete {
   position: absolute;
   right: 0;
-  bottom: 0;
   border: 0;
   background: transparent;
   width: 32px;
@@ -74,10 +73,18 @@
   justify-content: center;
 }
 
-.heart:hover {
+.heart {
+  bottom: 0;
+}
+
+.delete {
+  top: 0;
+}
+
+.heart:hover, .delete:hover {
   color: red;
 }
 
-.heart:active {
+.heart:active, .delete:active {
   transform: scale(0.9);
 }

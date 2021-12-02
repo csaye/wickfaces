@@ -70,10 +70,13 @@ export default function Post(props) {
           </button>
           {
             currUser.uid === uid &&
-            <button onClick={e => {
-              e.stopPropagation();
-              deletePost();
-            }}>
+            <button
+              className={styles.delete}
+              onClick={e => {
+                e.stopPropagation();
+                deletePost();
+              }}
+            >
               <DeleteIcon />
             </button>
           }
