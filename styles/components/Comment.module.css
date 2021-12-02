@@ -1,0 +1,23 @@
+.container {
+  text-align: left;
+  background: #fff;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.container > a {
+  font-weight: bold;
+}
+
+.container > a:hover {
+  text-decoration: underline;
+}
+
+.container > p {
+  margin: 0;
+}
+
+.container > span {
+  color: #999;
+  font-size: 12px;
+}
