@@ -77,6 +77,7 @@ export default function Post(props) {
         open={modalOpen}
         setOpen={setModalOpen}
         postRef={postRef}
+        currUser={currUser}
       />
     </>
   );
