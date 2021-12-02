@@ -54,32 +54,34 @@ export default function Post(props) {
             {' '}
             {new Date(date).toLocaleTimeString()}
           </span>
-          <span className={styles.likes}>{likes.length}</span>
-          <button
-            className={styles.heart}
-            onClick={e => {
-              e.stopPropagation();
-              toggleLike();
-            }}
-          >
-            {
-              likes.includes(currUser.uid) ?
-              <FavoriteIcon /> :
-              <FavoriteBorderIcon />
-            }
-          </button>
-          {
-            currUser.uid === uid &&
+          <div className={styles.options}>
+            <span className={styles.likes}>{likes.length}</span>
             <button
-              className={styles.delete}
+              className={styles.heart}
               onClick={e => {
                 e.stopPropagation();
-                deletePost();
+                toggleLike();
               }}
             >
-              <DeleteIcon />
+              {
+                likes.includes(currUser.uid) ?
+                <FavoriteIcon /> :
+                <FavoriteBorderIcon />
+              }
             </button>
-          }
+            {
+              currUser.uid === uid &&
+              <button
+                className={styles.delete}
+                onClick={e => {
+                  e.stopPropagation();
+                  deletePost();
+                }}
+              >
+                <DeleteIcon />
+              </button>
+            }
+          </div>
         </div>
       </div>
     )

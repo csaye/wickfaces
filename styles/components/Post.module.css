@@ -55,15 +55,15 @@
   font-size: 12px;
 }
 
-.likes {
+.options {
+  display: flex;
+  align-items: center;
   position: absolute;
-  right: 32px;
-  bottom: 8px;
+  bottom: 0;
+  right: 0;
 }
 
-.heart, .delete {
-  position: absolute;
-  right: 0;
+.options > button {
   border: 0;
   background: transparent;
   width: 32px;
@@ -71,14 +71,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.heart {
-  bottom: 0;
-}
-
-.delete {
-  top: 0;
 }
 
 .heart:hover, .delete:hover {
