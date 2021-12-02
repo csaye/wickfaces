@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Profile from './Profile';
 
 import styles from '../styles/components/Comment.module.css';
 
@@ -9,14 +10,21 @@ export default function Comment(props) {
   return (
     <div className={styles.container}>
       <Link href={`/${username}`}>
-        <a>{name}</a>
+        <a className={styles.profile}>
+          <Profile src={profile} />
+        </a>
       </Link>
-      <p>{text}</p>
-      <span>
-        {new Date(date).toLocaleDateString()}
-        {' '}
-        {new Date(date).toLocaleTimeString()}
-      </span>
+      <div className={styles.content}>
+        <Link href={`/${username}`}>
+          <a>{name}</a>
+        </Link>
+        <p>{text}</p>
+        <span>
+          {new Date(date).toLocaleDateString()}
+          {' '}
+          {new Date(date).toLocaleTimeString()}
+        </span>
+      </div>
     </div>
   );
 }

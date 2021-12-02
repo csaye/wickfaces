@@ -3,21 +3,29 @@
   background: #fff;
   padding: 10px;
   border-bottom: 2px solid #efefef;
+  display: flex;
 }
 
-.container > a {
+.profile {
+  margin-right: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.content > a {
   font-weight: bold;
 }
 
-.container > a:hover {
+.content > a:hover {
   text-decoration: underline;
 }
 
-.container > p {
+.content > p {
   margin: 0;
 }
 
-.container > span {
+.content > span {
   color: #999;
   font-size: 12px;
 }
