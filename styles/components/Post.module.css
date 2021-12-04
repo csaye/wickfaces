@@ -24,10 +24,6 @@
   overflow: hidden;
 }
 
-.profile:hover {
-  transform: scale(1.05);
-}
-
 .user {
   margin: 0;
 }

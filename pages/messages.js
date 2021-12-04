@@ -1,4 +1,5 @@
 import Loading from '../components/Loading';
+import Users from '../components/Users';
 import Router from 'next/router';
 
 import { useEffect } from 'react';
@@ -13,11 +14,12 @@ export default function Messages(props) {
     if (currUser === false) Router.replace('/');
   }, [currUser]);
 
-  // load if no current user
+  // return if loading current user
   if (!currUser) return <Loading />;
 
   return (
     <div>
+      <Users />
     </div>
   );
 }

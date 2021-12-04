@@ -1,7 +1,7 @@
 import Loading from './Loading';
 import Post from './Post';
 
-import { getFirestore, query, orderBy, doc } from 'firebase/firestore';
+import { query, orderBy } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import styles from '../styles/components/Posts.module.css';
@@ -9,12 +9,11 @@ import styles from '../styles/components/Posts.module.css';
 export default function Posts(props) {
   const { postsRef, allowPosts, currUser } = props;
 
-  const db = getFirestore();
-
   // listen for posts
   const postsQuery = query(postsRef, orderBy('date', 'desc'));
   const [posts] = useCollectionData(postsQuery, { idField: 'id' });
 
+  // return if loading posts
   if (!posts) return <Loading />;
 
   return (
