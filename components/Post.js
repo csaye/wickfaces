@@ -10,6 +10,7 @@ import { useState } from 'react';
 import {
   arrayUnion, arrayRemove, updateDoc, deleteDoc
 } from 'firebase/firestore';
+import getAgoText from '../util/getAgoText';
 
 import styles from '../styles/components/Post.module.css';
 
@@ -50,9 +51,7 @@ export default function Post(props) {
           </p>
           <p className={styles.text}>{text}</p>
           <span className={styles.date}>
-            {new Date(date).toLocaleDateString()}
-            {' '}
-            {new Date(date).toLocaleTimeString()}
+            {getAgoText(new Date(date))}
           </span>
           <div className={styles.options}>
             <span className={styles.likes}>{likes.length}</span>

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Profile from './Profile';
 
+import getAgoText from '../util/getAgoText';
+
 import styles from '../styles/components/Comment.module.css';
 
 export default function Comment(props) {
@@ -19,11 +21,7 @@ export default function Comment(props) {
           <a>{name}</a>
         </Link>
         <p>{text}</p>
-        <span>
-          {new Date(date).toLocaleDateString()}
-          {' '}
-          {new Date(date).toLocaleTimeString()}
-        </span>
+        <span>{getAgoText(new Date(date))}</span>
       </div>
     </div>
   );
