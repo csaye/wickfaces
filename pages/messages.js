@@ -43,7 +43,10 @@ export default function Messages(props) {
       />
       {
         selectedUser &&
-        <MessagesComponent messagesRef={messagesRef} />
+        <MessagesComponent
+          messagesRef={messagesRef}
+          currUser={currUser}
+        />
       }
     </div>
   );
