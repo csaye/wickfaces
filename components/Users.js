@@ -6,7 +6,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import styles from '../styles/components/Users.module.css';
 
 export default function Users(props) {
-  const { currUser } = props;
+  const { selectedUser, setSelectedUser } = props;
 
   const db = getFirestore();
 
@@ -32,7 +32,13 @@ export default function Users(props) {
       {
         usersData.map(userData =>
           <div key={userData.id}>
-            {userData.username}
+            <span>{userData.username}</span>
+            {
+              selectedUser !== userData.id &&
+              <button onClick={() => setSelectedUser(userData.id)}>
+                Select
+              </button>
+            }
           </div>
         )
       }

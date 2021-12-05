@@ -2,12 +2,14 @@ import Loading from '../components/Loading';
 import Users from '../components/Users';
 import Router from 'next/router';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from '../styles/pages/Messages.module.css';
 
 export default function Messages(props) {
   const { currUser } = props;
+
+  const [selectedUser, setSelectedUser] = useState(undefined);
 
   // route home if not authed
   useEffect(() => {
@@ -19,7 +21,10 @@ export default function Messages(props) {
 
   return (
     <div>
-      <Users />
+      <Users
+        selectedUser={selectedUser}
+        setSelectedUser={setSelectedUser}
+      />
     </div>
   );
 }
