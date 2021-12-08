@@ -3,7 +3,7 @@ import Comment from './Comment';
 import Dialog from './Dialog';
 
 import {
-  getFirestore, collection, query, orderBy, addDoc
+  getFirestore, collection, query, orderBy, addDoc, doc
 } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
@@ -47,6 +47,7 @@ export default function PostModal(props) {
           comments.map(comment =>
             <Comment
               comment={comment}
+              commentRef={doc(postRef, 'comments', comment.id)}
               currUser={currUser}
               key={comment.id}
             />
