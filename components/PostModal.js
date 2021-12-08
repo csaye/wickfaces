@@ -44,6 +44,8 @@ export default function PostModal(props) {
         {
           !comments ?
           <Loading /> :
+          !comments.length ?
+          <p>No comments yet. Be the first!</p> :
           comments.map(comment =>
             <Comment
               comment={comment}

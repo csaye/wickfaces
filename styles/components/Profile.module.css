@@ -1,6 +1,6 @@
 .container {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   position: relative;
   background: center center / cover url('/img/blank/profile.png');
   border-radius: 50%;
