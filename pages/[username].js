@@ -1,5 +1,5 @@
 import Loading from '../components/Loading';
-import Cover from '../components/Cover';
+import DynamicImage from '../components/DynamicImage';
 import Posts from '../components/Posts';
 import NewPostModal from '../components/NewPostModal';
 import Page404 from '../pages/404';
@@ -110,7 +110,12 @@ export default function User(props) {
     <div className={styles.container}>
       <div className={styles.overview}>
         <div className={styles.cover}>
-          <Cover src={coverSrc} />
+          <DynamicImage
+            src={coverSrc}
+            width="240px"
+            height="320px"
+            placeholder="/img/blank/cover.png"
+          />
           {
             userData.uid === uid &&
             <label>

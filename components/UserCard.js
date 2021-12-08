@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import Cover from './Cover';
+import DynamicImage from './DynamicImage';
 
 import styles from '../styles/components/UserCard.module.css';
 
@@ -12,7 +11,12 @@ export default function UserCard(props) {
       <Link href={`/${username}`}>
         <a>
           <p>{firstName} {lastName} &apos;{year}</p>
-          <Cover src={cover} />
+          <DynamicImage
+            src={cover}
+            width="240px"
+            height="320px"
+            placeholder="/img/blank/cover.png"
+          />
         </a>
       </Link>
     </div>
