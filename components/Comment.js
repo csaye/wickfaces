@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import Profile from './Profile';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import getAgoText from '../util/getAgoText';
 
 import styles from '../styles/components/Comment.module.css';
 
 export default function Comment(props) {
-  const { comment } = props;
+  const { comment, currUser } = props;
   const { text, date, profile, uid, likes, name, username } = comment;
 
   return (
@@ -23,6 +24,12 @@ export default function Comment(props) {
         <p>{text}</p>
         <span>{getAgoText(new Date(date))}</span>
       </div>
+      {
+        currUser.uid === uid &&
+        <button onClick={deletePost}>
+          <DeleteIcon />
+        </button>
+      }
     </div>
   );
 }

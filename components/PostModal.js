@@ -45,7 +45,11 @@ export default function PostModal(props) {
           !comments ?
           <Loading /> :
           comments.map(comment =>
-            <Comment comment={comment} key={comment.id} />
+            <Comment
+              comment={comment}
+              currUser={currUser}
+              key={comment.id}
+            />
           )
         }
       </div>
