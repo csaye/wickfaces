@@ -43,26 +43,28 @@ export default function Comment(props) {
         <span>{getAgoText(new Date(date))}</span>
         <p>{text}</p>
       </div>
-      <span>{likes.length}</span>
-      <button
-        className={styles.heart}
-        onClick={toggleLike}
-      >
-        {
-          likes.includes(currUser.uid) ?
-          <FavoriteIcon /> :
-          <FavoriteBorderIcon />
-        }
-      </button>
-      {
-        currUser.uid === uid &&
+      <div className={styles.options}>
+        <span>{likes.length}</span>
         <button
-          className={styles.delete}
-          onClick={deleteComment}
+          className={styles.heart}
+          onClick={toggleLike}
         >
-          <DeleteIcon />
+          {
+            likes.includes(currUser.uid) ?
+            <FavoriteIcon /> :
+            <FavoriteBorderIcon />
+          }
         </button>
-      }
+        {
+          currUser.uid === uid &&
+          <button
+            className={styles.delete}
+            onClick={deleteComment}
+          >
+            <DeleteIcon />
+          </button>
+        }
+      </div>
     </div>
   );
 }
