@@ -3,20 +3,38 @@ import UploadIcon from '@mui/icons-material/Upload';
 
 import { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
+import {
+  getStorage, ref, uploadBytes, getDownloadURL
+} from 'firebase/storage';
+import { v4 as uuid } from 'uuid';
 
 import styles from '../styles/components/NewPostModal.module.css';
 
 export default function NewPostModal(props) {
   const { open, setOpen, postsRef, currUser } = props;
 
+  const storage = getStorage();
+
   const [text, setText] = useState('');
   const [image, setImage] = useState(undefined);
+
+  // uploads image to firebase and returns url
+  async function uploadImage() {
+    // upload image
+    const filePath = `posts/${uuid()}`;
+    const fileRef = ref(storage, filePath);
+    await uploadBytes(fileRef, image);
+    // return download url
+    return await getDownloadURL(fileRef);
+  }
 
   // creates new post in firebase
   async function createPost() {
     setOpen(false);
     setText('');
+    const imageUrl = await uploadImage();
     await addDoc(postsRef, {
+      image: imageUrl,
       name: `${currUser.firstName} ${currUser.lastName}`,
       profile: currUser.profile,
       username: currUser.username,
