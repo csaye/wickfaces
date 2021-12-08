@@ -1,4 +1,5 @@
 import Modal from './Modal';
+import UploadIcon from '@mui/icons-material/Upload';
 
 import { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
@@ -9,6 +10,7 @@ export default function NewPostModal(props) {
   const { open, setOpen, postsRef, currUser } = props;
 
   const [text, setText] = useState('');
+  const [image, setImage] = useState(undefined);
 
   // creates new post in firebase
   async function createPost() {
@@ -35,6 +37,15 @@ export default function NewPostModal(props) {
           createPost();
         }}
       >
+        <label>
+          <UploadIcon />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={e => setImage(e.target.files[0])}
+            hidden
+          />
+        </label>
         <textarea
           placeholder="What's happening?"
           value={text}
