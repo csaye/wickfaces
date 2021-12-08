@@ -33,7 +33,10 @@ export default function Comment(props) {
       </div>
       {
         currUser.uid === uid &&
-        <button onClick={deleteComment}>
+        <button
+          className={styles.delete}
+          onClick={deleteComment}
+        >
           <DeleteIcon />
         </button>
       }
