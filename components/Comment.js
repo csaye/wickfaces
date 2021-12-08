@@ -28,8 +28,8 @@ export default function Comment(props) {
         <Link href={`/${username}`}>
           <a>{name}</a>
         </Link>
-        <p>{text}</p>
         <span>{getAgoText(new Date(date))}</span>
+        <p>{text}</p>
       </div>
       {
         currUser.uid === uid &&

@@ -2,7 +2,6 @@
   text-align: left;
   background: #fff;
   padding: 10px;
-  border-bottom: 2px solid #efefef;
   display: flex;
   position: relative;
 }
@@ -15,7 +14,8 @@
 }
 
 .content > a {
-  font-weight: bold;
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 .content > a:hover {

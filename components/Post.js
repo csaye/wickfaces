@@ -47,12 +47,9 @@ export default function Post(props) {
             <Link href={`/${username}`}>
               <a onClick={e => e.stopPropagation()}>{name}</a>
             </Link>
-            <span>@{username}</span>
+            <span>{getAgoText(new Date(date))}</span>
           </p>
           <p className={styles.text}>{text}</p>
-          <span className={styles.date}>
-            {getAgoText(new Date(date))}
-          </span>
           <div className={styles.options}>
             <span className={styles.likes}>{likes.length}</span>
             <button
