@@ -44,7 +44,10 @@ export default function Comment(props) {
         <p>{text}</p>
       </div>
       <span>{likes.length}</span>
-      <button onClick={toggleLike}>
+      <button
+        className={styles.heart}
+        onClick={toggleLike}
+      >
         {
           likes.includes(currUser.uid) ?
           <FavoriteIcon /> :
