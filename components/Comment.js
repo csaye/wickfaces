@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Profile from './Profile';
+import DynamicImage from './DynamicImage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -33,7 +33,12 @@ export default function Comment(props) {
     <div className={styles.container}>
       <Link href={`/${username}`}>
         <a className={styles.profile}>
-          <Profile src={profile} />
+          <DynamicImage
+            src={profile}
+            width="48px"
+            height="48px"
+            placeholder="/img/blank/profile.png"
+          />
         </a>
       </Link>
       <div className={styles.content}>

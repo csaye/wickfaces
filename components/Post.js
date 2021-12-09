@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import PostModal from './PostModal';
-import Profile from './Profile';
+import DynamicImage from './DynamicImage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -39,7 +38,12 @@ export default function Post(props) {
       <div className={styles.container}>
         <Link href={`/${username}`}>
           <a className={styles.profile} onClick={e => e.stopPropagation()}>
-            <Profile src={profile} />
+            <DynamicImage
+              src={profile}
+              width="48px"
+              height="48px"
+              placeholder="/img/blank/profile.png"
+            />
           </a>
         </Link>
         <div className={styles.content}>

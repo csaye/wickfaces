@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Loading from '../components/Loading';
-import Profile from '../components/Profile';
+import DynamicImage from '../components/DynamicImage';
 
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
@@ -39,7 +39,12 @@ export default function Users(props) {
           >
             <Link href={`/${userData.username}`}>
               <a onClick={e => e.stopPropagation()}>
-                <Profile src={userData.profile} />
+                <DynamicImage
+                  src={userData.profile}
+                  width="48px"
+                  height="48px"
+                  placeholder="/img/blank/profile.png"
+                />
               </a>
             </Link>
             <div>
