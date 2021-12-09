@@ -1,7 +1,7 @@
 import Loading from './Loading';
 import Post from './Post';
 
-import { query, orderBy } from 'firebase/firestore';
+import { query, orderBy, doc } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import styles from '../styles/components/Posts.module.css';

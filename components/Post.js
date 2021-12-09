@@ -15,7 +15,7 @@ import styles from '../styles/components/Post.module.css';
 
 export default function Post(props) {
   const { post, postRef, currUser } = props;
-  const { text, date, uid, username, name, likes, profile } = post;
+  const { text, date, uid, username, name, likes, profile, image } = post;
 
   const [modalOpen, setModalOpen] = useState(false);
 

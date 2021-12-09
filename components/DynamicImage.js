@@ -17,6 +17,7 @@ export default function DynamicImage(props) {
       {
         src === undefined ?
         <Loading /> :
+        src &&
         <Image
           placeholder="blur"
           blurDataURL={src}
