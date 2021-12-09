@@ -1,3 +1,4 @@
+import DynamicImage from './DynamicImage';
 import Modal from './Modal';
 import UploadIcon from '@mui/icons-material/Upload';
 
@@ -31,8 +32,9 @@ export default function NewPostModal(props) {
   // creates new post in firebase
   async function createPost() {
     setOpen(false);
-    setText('');
     const imageUrl = await uploadImage();
+    setText('');
+    setImage('');
     await addDoc(postsRef, {
       image: imageUrl,
       name: `${currUser.firstName} ${currUser.lastName}`,
@@ -64,6 +66,16 @@ export default function NewPostModal(props) {
             hidden
           />
         </label>
+        <div className={styles.image}>
+          {
+            image &&
+            <DynamicImage
+              src={URL.createObjectURL(image)}
+              width="200px"
+              height="200px"
+            />
+          }
+        </div>
         <textarea
           placeholder="What's happening?"
           value={text}
