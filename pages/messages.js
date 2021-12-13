@@ -36,7 +36,7 @@ export default function Messages(props) {
   if (!currUser) return <Loading />;
 
   return (
-    <div>
+    <div className={styles.container}>
       <Users
         selectedUser={selectedUser}
         setSelectedUser={setSelectedUser}

@@ -1,3 +1,8 @@
+.container {
+  width: 400px;
+  padding: 8px;
+}
+
 .user {
   display: flex;
   align-items: center;

@@ -30,7 +30,7 @@ export default function Users(props) {
   if (!usersData) return <Loading />;
 
   return (
-    <div>
+    <div className={styles.container}>
       {
         usersData.map(userData =>
           <div
