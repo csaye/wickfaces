@@ -23,7 +23,7 @@ export default function Messages(props) {
   function getUsersId() {
     if (!selectedUser) return '~';
     const uidA = currUser.uid;
-    const uidB = selectedUser;
+    const uidB = selectedUser.id;
     return uidA < uidB ? `${uidA}-${uidB}` : `${uidB}-${uidA}`;
   }
 
@@ -46,6 +46,7 @@ export default function Messages(props) {
         <MessagesComponent
           messagesRef={messagesRef}
           currUser={currUser}
+          selectedUser={selectedUser}
         />
       }
     </div>

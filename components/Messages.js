@@ -8,7 +8,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import styles from '../styles/components/Messages.module.css';
 
 export default function Messages(props) {
-  const { messagesRef, currUser } = props;
+  const { messagesRef, currUser, selectedUser } = props;
 
   const [text, setText] = useState('');
 
@@ -45,6 +45,7 @@ export default function Messages(props) {
           addMessage();
         }}>
         <input
+          placeholder={`Message ${selectedUser.firstName}`}
           value={text}
           onChange={e => setText(e.target.value)}
           required

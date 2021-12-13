@@ -58,8 +58,8 @@ export default function Users(props) {
               </p>
             </div>
             {
-              selectedUser !== userData.id &&
-              <button onClick={() => setSelectedUser(userData.id)}>
+              selectedUser?.id !== userData.id &&
+              <button onClick={() => setSelectedUser(userData)}>
                 Select
               </button>
             }
