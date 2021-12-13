@@ -32,16 +32,18 @@ export default function Messages(props) {
   if (!messages) return <Loading />;
 
   return (
-    <div>
+    <div className={styles.container}>
       {
         messages.map(message =>
           <Message {...message} key={message.id} />
         )
       }
-      <form onSubmit={e => {
-        e.preventDefault();
-        addMessage();
-      }}>
+      <form
+        className={styles.form}
+        onSubmit={e => {
+          e.preventDefault();
+          addMessage();
+        }}>
         <input
           value={text}
           onChange={e => setText(e.target.value)}

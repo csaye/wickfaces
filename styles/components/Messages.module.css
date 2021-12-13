@@ -1,0 +1,25 @@
+.form {
+  padding: 20px
+}
+
+.form > input {
+  border: 2px solid #efefef;
+  padding: 10px;
+  margin-right: 8px;
+  border-radius: 8px;
+}
+
+.form > button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid #999;
+  background: #efefef;
+}
+
+.form > button:hover {
+  background: #ddd;
+}
+
+.form > button:active {
+  background: #efefef;
+}
