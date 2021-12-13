@@ -1,7 +1,7 @@
 import Loading from './Loading';
 import Message from './Message';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { query, orderBy, addDoc } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
@@ -18,6 +18,7 @@ export default function Messages(props) {
 
   // adds a new message in firebase
   async function addMessage() {
+    setText('');
     await addDoc(messagesRef, {
       text: text,
       date: new Date().getTime(),
@@ -27,6 +28,11 @@ export default function Messages(props) {
       profile: currUser.profile
     })
   }
+
+  // reset text when selected user changes
+  useEffect(() => {
+    setText('');
+  }, [selectedUser]);
 
   // return if loading
   if (!messages) return <Loading />;
