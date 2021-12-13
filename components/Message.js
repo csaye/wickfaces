@@ -6,9 +6,9 @@ export default function Message(props) {
   const { text, date } = props;
 
   return (
-    <div>
-      <span>{text}</span>
+    <div className={styles.container}>
       <span>{getAgoText(new Date(date))}</span>
+      <p>{text}</p>
     </div>
   );
 }
