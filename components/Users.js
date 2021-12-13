@@ -57,6 +57,7 @@ export default function Users(props) {
                 <span>@{userData.username}</span>
               </p>
             </div>
+            <span className="flexfill" />
             {
               selectedUser?.id !== userData.id &&
               <button onClick={() => setSelectedUser(userData)}>

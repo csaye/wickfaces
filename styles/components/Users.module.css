@@ -6,6 +6,11 @@
 .user {
   display: flex;
   align-items: center;
+  background: #efefef;
+  margin: 8px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .user > a {
@@ -16,4 +21,20 @@
   margin: 0 8px;
   font-size: 12px;
   color: #999;
+}
+
+.user > button {
+  margin-right: 8px;
+  background: #efefef;
+  border: 2px solid #999;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.user > button:hover {
+  background: #ddd;
+}
+
+.user > button:active {
+  background: #efefef;
 }
