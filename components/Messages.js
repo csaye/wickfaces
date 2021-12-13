@@ -7,6 +7,9 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import styles from '../styles/components/Messages.module.css';
 
+// milliseconds before message head expires
+const headExpire = 1000 * 60 * 5;
+
 export default function Messages(props) {
   const { messagesRef, currUser, selectedUser } = props;
 
@@ -34,14 +37,31 @@ export default function Messages(props) {
     setText('');
   }, [selectedUser]);
 
+  // returns whether header should be shown
+  function showHeader(message, i) {
+    // return true if first message
+    if (i === 0) return true;
+    const last = messages[i - 1];
+    // return true if different sender
+    if (message.uid !== last.uid) return true;
+    // return true if enough time passed
+    if (new Date(last.date) - new Date(message.date) > headExpire) return true;
+    // return false if invalid for header
+    return false;
+  }
+
   // return if loading
   if (!messages) return <Loading />;
 
   return (
     <div className={styles.container}>
       {
-        messages.map(message =>
-          <Message {...message} key={message.id} />
+        messages.map((message, i) =>
+          <Message
+            showHeader={showHeader(message, i)}
+            message={message}
+            key={message.id}
+          />
         )
       }
       <form
