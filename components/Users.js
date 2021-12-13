@@ -50,7 +50,10 @@ export default function Users(props) {
             <div>
               <p>
                 <Link href={`/${userData.username}`}>
-                  <a onClick={e => e.stopPropagation()}>
+                  <a
+                    className={styles.name}
+                    onClick={e => e.stopPropagation()}
+                  >
                     {userData.firstName} {userData.lastName}
                   </a>
                 </Link>
@@ -59,7 +62,11 @@ export default function Users(props) {
             </div>
             <span className="flexfill" />
             {
-              selectedUser?.id !== userData.id &&
+              selectedUser?.id === userData.id ?
+              <button
+                className={styles.selected}
+                onClick={() => setSelectedUser(undefined)}
+              >Selected</button> :
               <button onClick={() => setSelectedUser(userData)}>
                 Select
               </button>
